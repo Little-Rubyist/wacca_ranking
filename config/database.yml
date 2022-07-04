@@ -29,4 +29,4 @@ production:
   <<: *default
   database: wacca_ranking_production
   username: myapp
-  password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
+  password: <%= Rails.application.credentials.dig(:database, :password) %>

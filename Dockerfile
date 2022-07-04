@@ -1,14 +1,17 @@
 FROM ruby:3.1
 
+ENV APP_ROOT /app
 # シェルスクリプトとしてbashを利用
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-RUN mkdir /myapp
-WORKDIR /myapp
-COPY Gemfile /myapp/Gemfile
-COPY Gemfile.lock /myapp/Gemfile.lock
+RUN mkdir $APP_ROOT
+WORKDIR $APP_ROOT
+
+RUN apt-get update && apt-get -y install vim
+COPY Gemfile $APP_ROOT
+COPY Gemfile.lock $APP_ROOT
 RUN bundle install
-COPY . /myapp
+COPY . $APP_ROOT
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
