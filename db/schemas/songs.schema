@@ -1,0 +1,8 @@
+# encoding: utf-8
+create_table "songs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.string :title
+  t.string :song_id
+  t.integer :difficulty
+  t.datetime "updated_at", precision: 6, null: false
+  t.datetime "created_at", precision: 6, null: false
+end

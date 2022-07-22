@@ -7,11 +7,19 @@ Things you may want to cover:
 
 * Ruby version
 
+  3.1.2
+
 * System dependencies
 
 * Configuration
 
 * Database creation
+
+  `bundle exec ridgepole -c config/database.yml -E development -f db/schemas/Schemafile --apply`
+
+  or
+
+  `rails ridgepole:apply`
 
 * Database initialization
 
