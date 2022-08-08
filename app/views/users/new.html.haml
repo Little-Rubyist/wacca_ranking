@@ -1,0 +1,12 @@
+%h1 アカウント登録
+= form_with model: @user, url: sign_up_url do |f|
+  = f.label :name
+  = f.text_field :name
+
+  = f.label :password
+  = f.password_field :password
+
+  = f.label :password_confirmation
+  = f.password_field :password_confirmation
+
+  = f.submit "登録する"
