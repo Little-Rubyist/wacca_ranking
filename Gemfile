@@ -71,7 +71,6 @@ gem 'mechanize'
 gem "selenium-webdriver"
 gem "webdrivers"
 gem 'nokogiri'
-gem 'cssbundling-rails'
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
