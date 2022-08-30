@@ -1,10 +1,5 @@
 {
   "name": "app",
   "private": "true",
-  "dependencies": {
-    "sass": "^1.54.6"
-  },
-  "scripts": {
-    "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
-  }
+  "scripts": { "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules" }
 }
