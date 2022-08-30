@@ -16,6 +16,9 @@ class CreateSongData::ImportGenre
       next unless songs
       songs.update_all(genre: :tanoc)
     end
+
+    # update genre that cannot import gamerch
+    update_cannot_import_songs
   end
 
   def import(genre)
@@ -25,6 +28,48 @@ class CreateSongData::ImportGenre
       songs = Song.where(title: title)
       next unless songs
       songs.update_all(genre: genre)
+    end
+  end
+
+  def update_cannot_import_songs
+    songs = [
+      {song_id: 2007,
+       genre: :touhou},
+      {song_id: 1051,
+       genre: :variety},
+      {song_id: 3057,
+       genre: :original},
+      {song_id: 1265,
+       genre: :touhou},
+      {song_id: 2049,
+       genre: :tanoc},
+      {song_id: 2047,
+       genre: :tanoc},
+      {song_id: 1087,
+       genre: :tanoc},
+      {song_id: 1212,
+       genre: :original},
+      {song_id: 3024,
+       genre: :vocaloid},
+      {song_id: 3041,
+       genre: :variety},
+      {song_id: 1086,
+       genre: :tanoc},
+      {song_id: 3075,
+       genre: :tanoc},
+      {song_id: 2204,
+       genre: :anime_pop},
+      {song_id: 1241,
+       genre: :variety},
+      {song_id: 2058,
+       genre: :anime_pop},
+      {song_id: 1071,
+       genre: :tanoc},
+      {song_id: 2029,
+       genre: :anime_pop}
+    ]
+    songs.each do |song|
+      Song.where(song_id: song[:song_id]).update_all(genre: song[:genre])
     end
   end
 end
