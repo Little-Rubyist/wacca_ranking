@@ -12,6 +12,20 @@
   = f.label :password_confirmation
   = f.password_field :password_confirmation
 
-  = f.submit "登録する", {class: "btn btn-primary mx-1"}
+  = f.submit "登録する", class: "btn btn-primary mx-1"
+
+  .dropdown
+    %button.btn.btn-secondary.dropdown-toggle#dropdownMenuButton1{type: "button", "data-bs-toggle": "dropdown", "aria-expanded": "false"}
+      Dropdown button
+    %ul.dropdown-menu{"aria-labelledby": "dropdownMenuButton1"}
+      %li
+        %a.dropdown-item{href: "#"}
+          Action
+      %li
+        %a.dropdown-item{href: "#"}
+          Another action
+      %li
+        %a.dropdown-item{href: "#"}
+          Something else here
 
 = link_to "ログイン", sign_in_path
