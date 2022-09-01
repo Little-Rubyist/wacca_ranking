@@ -14,23 +14,23 @@ class CreateSongData::ImportSongData
       hard_level = song.attribute('data-rank_hard_level').text
       expert_level = song.attribute('data-rank_expert_level').text
       inferno_level = song.attribute('data-rank_inferno_level').text
-      Song.create(song_id: music_id,
+      Song.create(music_id: music_id,
                   title: title,
                   ruby: ruby,
                   diff_type: :normal,
                   difficulty: calculate_level(normal_level))
-      Song.create(song_id: music_id,
+      Song.create(music_id: music_id,
                   title: title,
                   ruby: ruby,
                   diff_type: :hard,
                   difficulty: calculate_level(hard_level))
-      Song.create(song_id: music_id,
+      Song.create(music_id: music_id,
                   title: title,
                   ruby: ruby,
                   diff_type: :expert,
                   difficulty: calculate_level(expert_level))
       unless calculate_level(inferno_level) == '0'
-        Song.create(song_id: music_id,
+        Song.create(music_id: music_id,
                     title: title,
                     ruby: ruby,
                     diff_type: :inferno,

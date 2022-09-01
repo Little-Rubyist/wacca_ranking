@@ -17,7 +17,7 @@ class CreateSongData::ImportOfflineSongs
     end
 
     songs = [2204, 2058, 2029, 3024]
-    Song.where(song_id: songs).update_all(can_play_offline: false)
+    Song.where(music_id: songs).update_all(can_play_offline: false)
 
     Song.where(can_play_offline: nil).update_all(can_play_offline: true)
   end
