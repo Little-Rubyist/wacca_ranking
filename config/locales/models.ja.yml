@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      song: 楽曲
+    attributes:
+      user:
+        name: ID
+        password: パスワード
+        password_confirmation: パスワード(確認)
