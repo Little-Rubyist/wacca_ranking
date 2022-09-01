@@ -1,2 +1,4 @@
 require 'users.schema'
 require 'songs.schema'
+require 'user_songs.schema'
+require 'user_scores.schema'
