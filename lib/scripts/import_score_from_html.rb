@@ -21,6 +21,12 @@ class ImportScoreFromHtml
       expert_achieve = find_achieve_src(song, 'expert')
       inferno_achieve = find_achieve_src(song, 'inferno')
     end
+
+    favorite_songs = list.search('li.filter-favorite').map do |song|
+      song.at_css('form').attribute('name').text.match(/detail([0-9]*)/)[1]
+    end
+    #TODO: 挙動確認
+    @user.user_songs.where('song.music_id': favorite_songs).update_all(is_favorite: true)
   end
 
   def find_achieve_src(song, different)
@@ -65,6 +71,8 @@ class ImportScoreFromHtml
       return 'ML'
     when 'achieve1.png'.method(:in?)
       return 'clear'
+    else
+      ''
     end
   end
 end
