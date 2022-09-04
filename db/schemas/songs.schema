@@ -1,6 +1,7 @@
 # encoding: utf-8
 create_table "songs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   t.string :title
+  t.string :title_english
   t.string :ruby
   t.integer :music_id
   t.boolean :can_play_offline

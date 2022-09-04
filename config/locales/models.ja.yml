@@ -6,5 +6,6 @@ ja:
     attributes:
       user:
         name: ID
+        display_name: 表示名
         password: パスワード
         password_confirmation: パスワード(確認)
