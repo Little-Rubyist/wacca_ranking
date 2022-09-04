@@ -4,8 +4,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    if (user = User.create(user_params))
-      log_in user
+    @user = User.new(user_params)
+    if @user.save
+      log_in @user
       redirect_to user_path, notice: 'ユーザーを登録しました'
     else
       render :new, notice: '登録に失敗しました'
