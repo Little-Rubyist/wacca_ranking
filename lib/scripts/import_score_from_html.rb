@@ -2,31 +2,33 @@ class ImportScoreFromHtml
   def initialize
     html = File.read('tmp/wacca_mypage.htm')
     page = Nokogiri::HTML.parse(html, nil)
+    list = page.css('.playdata__score-list__wrap.grid.muuri').css('li.item')
+    @user = User.first
 
-    list = page.xpath('/html/body/div[1]/div/section/div[2]/div[3]/ul')
+    favorite_songs = page.css('.playdata__score-list__wrap.grid.muuri')
+                         .search('li.filter-favorite').map do |song|
+      song.at_css('form').attribute('name').text.match(/detail([0-9]*)/)[1]
+    end
+    @user.user_songs.joins(:song).where(songs: {music_id: favorite_songs}).update_all(is_favorite: true)
+
     list.each do |song|
-      base_data = song.at_css('.item')
       music_id = song.at_css('form').attribute('name').text.match(/detail([0-9]*)/)[1]
-      title = song.at('.playdata__score-list__song-info__name').text
-      normal_level = base_data.attribute('data-rank_normal_level').text
-      hard_level = base_data.attribute('data-rank_hard_level').text
-      expert_level = base_data.attribute('data-rank_expert_level').text
-      inferno_level = base_data.attribute('data-rank_inferno_level').text
-      normal_score = base_data.attribute('data-rank_normal_score').text
-      hard_score = base_data.attribute('data-rank_hard_score').text
-      expert_score = base_data.attribute('data-rank_expert_score').text
-      inferno_score = base_data.attribute('data-rank_inferno_score').text
+      normal_score = song.attribute('data-rank_normal_score').text
+      hard_score = song.attribute('data-rank_hard_score').text
+      expert_score = song.attribute('data-rank_expert_score').text
+      inferno_score = song.attribute('data-rank_inferno_score').text
       normal_achieve = find_achieve_src(song, 'normal')
       hard_achieve = find_achieve_src(song, 'hard')
       expert_achieve = find_achieve_src(song, 'expert')
       inferno_achieve = find_achieve_src(song, 'inferno')
+      songs = @user.user_songs.joins(:song).where(songs: {music_id: music_id})
+      songs.each do |song_data|
+        diff = song_data.song.diff_type
+        next if eval("#{diff}_score") === "0"
+        song_data.user_scores.create(score: eval("#{diff}_score"),
+                                      achieve: check_achieve(eval("#{diff}_achieve")))
+      end
     end
-
-    favorite_songs = list.search('li.filter-favorite').map do |song|
-      song.at_css('form').attribute('name').text.match(/detail([0-9]*)/)[1]
-    end
-    #TODO: 挙動確認
-    @user.user_songs.where('song.music_id': favorite_songs).update_all(is_favorite: true)
   end
 
   def find_achieve_src(song, different)
@@ -64,15 +66,15 @@ class ImportScoreFromHtml
   def check_achieve(src)
     case src
     when 'achieve4.png'.method(:in?)
-      return 'AM'
+      return 'all_marvelous'
     when 'achieve3.png'.method(:in?)
-      return 'FC'
+      return 'full_combo'
     when 'achieve2.png'.method(:in?)
-      return 'ML'
+      return 'missless'
     when 'achieve1.png'.method(:in?)
       return 'clear'
     else
-      ''
+      nil
     end
   end
 end
