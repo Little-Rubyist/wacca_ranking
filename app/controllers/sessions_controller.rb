@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:session][:name].downcase)
     if user && user.authenticate(params[:session][:password])
       log_in user
-      redirect_to user_url(user)
+      redirect_to user_url
     else
       render 'new'
     end
