@@ -10,4 +10,5 @@ Rails.application.routes.draw do
       post 'scraping' => :scraping
     end
   end
+  resources :songs, only: [:show, :index]
 end
