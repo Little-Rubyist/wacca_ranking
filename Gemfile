@@ -73,6 +73,8 @@ gem "webdrivers"
 gem 'nokogiri'
 gem 'bootstrap'
 gem 'mini_racer'
+gem 'ransack'
+gem 'pagy'
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
