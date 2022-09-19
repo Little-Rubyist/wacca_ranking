@@ -1,3 +1,28 @@
 %h1 users#show.html.haml
 
+%button.btn.btn-secondary{ type: "button", "data-toggle": "tooltip", "data-placement": "top", title: "Tooltip on top"}
+  Tooltip on top
+
+.container
+  = search_form_for @q, url: user_path do |f|
+    = f.label :song_difficulty_lteq
+    = f.search_field :song_difficulty_lteq
+    = f.label :song_diff_type_eq
+    = f.select :song_diff_type_eq, Song.diff_types.map { |k, _| [Song.human_attribute_enum_value(:diff_type, k), k] }.to_h
+  %table.table
+    %thead
+      %tr
+        %th{scope: "col"} title
+        %th{scope: "col"} diff
+        %th{scope: "col"} score
+        %th{scope: "col"} achieve
+    %tbody
+      -# - @user.user_songs.each do |song|
+      -#   %tr
+      -#     %th{scope: 'row'} #{song.song.title}
+      -#     %td #{song.song.diff_type}
+      -#     %td #{song.user_scores.order(score: :desc).first&.score}
+      -#     %td #{song.user_scores.order(score: :desc).first&.achieve}
+
+=# 諸々設定とかその辺
 = button_to 'scraping', scraping_user_path

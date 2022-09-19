@@ -16,6 +16,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    @q = UserSong.ransack(params[:q])
+    @user = current_user
+    # @songs = @q.result.includes(:songs, :user_scores)
+    @songs = User.includes(:user_songs, :songs).includes(:user_scores).where(users: {id: 2})
+    # User.includes(:user_songs, :songs).preload(:user_scores)
   end
 
   def scraping
