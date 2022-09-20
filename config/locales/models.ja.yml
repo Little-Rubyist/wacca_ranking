@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザー
       song: 楽曲
+      song_score: 楽曲スコア
     attributes:
       user:
         name: ID
@@ -11,8 +12,15 @@ ja:
         password_confirmation: パスワード(確認)
       song:
         diff_type: 難易度
+      song_score:
+        achieve: クリア状態
       song/diff_type:
         normal: Normal
         hard: Hard
         expert: Expert
         inferno: Inferno
+      song_score/achieve:
+        clear: Clear
+        missless: Missless
+        full_combo: Full Combo
+        all_marvelous: All Marvelous

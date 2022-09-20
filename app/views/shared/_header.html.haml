@@ -1,7 +1,7 @@
 %nav.navbar.navbar-expand-lg.bg-light
   .container-fluid
     %a.navbar-brand{href: root_path} WACCA
-    %button.navbar-toggler{type: 'button', data: { bs: { toggle: 'collapse', target: '#navberSupportedContent' }}, aria: { controls: 'navbarSupportedContent', expanded: false, label: 'Toggle navigation' }}
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarSupportedContent", "data-bs-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
     .collapse.navbar-collapse#navbarSupportedContent
       %ul.navbar-nav.me-auto.mb-2.mb-lg-0
@@ -9,3 +9,15 @@
           %a.nav-link.active{href: sign_up_path} 登録
         %li.nav-item
           %a.nav-link.active{href: sign_in_path} ログイン
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
+            Dropdown
+          %ul.dropdown-menu
+            %li
+              %a.dropdown-item{:href => "#"} Action
+            %li
+              %a.dropdown-item{:href => "#"} Another action
+            %li
+              %hr.dropdown-divider/
+            %li
+              %a.dropdown-item{:href => "#"} Something else here

@@ -17,10 +17,15 @@ class UsersController < ApplicationController
 
   def show
     @q = UserSong.ransack(params[:q])
-    @user = current_user
-    # @songs = @q.result.includes(:songs, :user_scores)
-    @songs = User.includes(:user_songs, :songs).includes(:user_scores).where(users: {id: 2})
-    # User.includes(:user_songs, :songs).preload(:user_scores)
+    if params[:q].nil?
+      params[:q] = {}
+    end
+    params[:q][:user_id_eq] = current_user.id
+    @scores = UserScore.select('user_scores.user_song_id as user_song_id, MAX(user_scores.score) as score, MAX(user_scores.achieve) as achieve')
+                       .joins(:user_song)
+                       .where(user_songs: {user_id: current_user.id})
+                       .group(:user_song_id)
+    @songs = @q.result(distinct: true).preload(:song, :user_scores).joins(:song)
   end
 
   def scraping

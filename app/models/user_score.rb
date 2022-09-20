@@ -1,4 +1,4 @@
-class UserScore < ActiveRecord::Base
+class UserScore < ApplicationRecord
   belongs_to :user_song
 
   enum achieve: {
