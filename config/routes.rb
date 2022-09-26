@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resource :user, only: [:show, :update, :edit] do
     collection do
       post 'scraping' => :scraping
+      get 'settings' => :setting
+      post :import_score_from_html
     end
   end
   resources :songs, only: [:show, :index]

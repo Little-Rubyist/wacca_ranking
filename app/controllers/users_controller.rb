@@ -29,8 +29,19 @@ class UsersController < ApplicationController
     @pagy, @songs = pagy(songs, page: params[:page], items: 25, size: [1, 2, 2, 1])
   end
 
+  def update
+
+  end
+
+  def setting
+  end
+
   def scraping
     WaccaScraping.new
+  end
+
+  def import_score_from_html
+    ImportScoreFromHtml.new(params[:user][:file].path)
   end
 
   private

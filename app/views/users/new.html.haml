@@ -20,7 +20,5 @@
       = f.label :password_confirmation, class: 'form-label col-3'
       .col-9
         = f.password_field :password_confirmation, class: 'form-control'
-
-    = f.submit "登録する", class: "btn btn-primary mx-1"
-
-  = link_to "ログイン", sign_in_path
+    .d-grid.gap-2.d-block.justify-content-end.m-3
+      = f.submit "登録する", class: "btn btn-primary mx-1"

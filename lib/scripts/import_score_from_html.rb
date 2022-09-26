@@ -1,6 +1,6 @@
 class ImportScoreFromHtml
-  def initialize
-    html = File.read('tmp/wacca_mypage.htm')
+  def initialize(file)
+    html = File.read(file)
     page = Nokogiri::HTML.parse(html, nil)
     list = page.css('.playdata__score-list__wrap.grid.muuri').css('li.item')
     @user = User.first

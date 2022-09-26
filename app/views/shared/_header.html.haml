@@ -5,10 +5,16 @@
       %span.navbar-toggler-icon
     .collapse.navbar-collapse#navbarSupportedContent
       %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        - unless logged_in?
+          %li.nav-item
+            %a.nav-link.active{href: sign_up_path} 登録
+          %li.nav-item
+            %a.nav-link.active{href: sign_in_path} ログイン
+        - if logged_in?
+          %li.nav-item
+            %a.nav-link.active{href: user_path} ホーム
         %li.nav-item
-          %a.nav-link.active{href: sign_up_path} 登録
-        %li.nav-item
-          %a.nav-link.active{href: sign_in_path} ログイン
+          %a.nav-link.active{href: songs_path} 楽曲一覧
         %li.nav-item.dropdown
           %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
             Dropdown
@@ -21,3 +27,10 @@
               %hr.dropdown-divider/
             %li
               %a.dropdown-item{:href => "#"} Something else here
+      - if logged_in?
+        .d-flex
+          %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+            %li.nav-item
+              = link_to 'ログアウト', sign_out_path, {method: :post, class: 'nav-link active'}
+            %li.nav-item
+              %a.nav-link.active{href: settings_user_path} 設定

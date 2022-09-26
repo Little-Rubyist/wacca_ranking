@@ -1,6 +1,8 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "popper"
 import "bootstrap"
+import Rails from '@rails/ujs';
+Rails.start();
 console.log('yeah, we are ready!')
 window.updateTextInput = function(val) {
   document.getElementById('difficulty-value-id').value = `${val}以上`
