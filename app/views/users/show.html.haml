@@ -14,8 +14,8 @@
             = f.label :song_diff_type_eq, '難易度', class: 'form-label'
             = f.select :song_diff_type_eq, Song.diff_types.map { |k, v| [Song.human_attribute_enum_value(:diff_type, k), v] }.to_h, {include_blank: true},  {class: 'form-select'}
           .col-lg-3.col-md-4
-            = f.label :song_title_matches, 'タイトル', class: 'form-label'
-            = f.search_field :song_title_matches, class: 'form-control'
+            = f.label :song_title_cont, 'タイトル', class: 'form-label'
+            = f.search_field :song_title_cont, class: 'form-control'
           .col-lg-3.col-md-4
             = f.label :user_scores_achieve_eq, 'FC状況', class: 'form-label'
             = f.select :user_scores_achieve_eq, UserScore.achieves.map { |k, v| [UserScore.human_attribute_enum_value(:achieve, k), v] }.to_h, {include_blank: true}, {class: 'form-select'}

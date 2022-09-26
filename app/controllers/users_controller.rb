@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      UserSong.insert_all(Song.all.map{|song| {user_id: User.first.id, song_id: song.id, is_favorite: false}})
+      UserSong.insert_all(Song.all.map{|song| {user_id: @user.id, song_id: song.id, is_favorite: false}})
       log_in @user
       redirect_to user_path, notice: 'ユーザーを登録しました'
     else
@@ -16,11 +16,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @q = UserSong.ransack(params[:q])
     if params[:q].nil?
       params[:q] = {}
+      params[:q][:song_difficulty_gteq] = 1
     end
-    params[:q][:user_id_eq] = current_user.id
+
+    @q = UserSong.where(user_id: current_user.id).ransack(params[:q])
     @scores = UserScore.select('user_scores.user_song_id as user_song_id, MAX(user_scores.score) as score, MAX(user_scores.achieve) as achieve')
                        .joins(:user_song)
                        .where(user_songs: {user_id: current_user.id})
@@ -41,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def import_score_from_html
-    ImportScoreFromHtml.new(params[:user][:file].path)
+    ImportScoreFromHtml.new(current_user, params[:user][:file].path)
   end
 
   private
