@@ -75,6 +75,7 @@ gem 'bootstrap'
 gem 'mini_racer'
 gem 'ransack'
 gem 'pagy'
+gem 'rails-i18n'
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]

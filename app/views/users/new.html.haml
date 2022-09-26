@@ -1,10 +1,11 @@
 .container
   %h1 アカウント登録
   = form_with model: @user, url: sign_up_url do |f|
+    = render 'shared/error_messages', object: f.object
     .row.justify-content-center.mb-2
       = f.label :name, class: 'form-label col-3'
       .col-9
-        = f.text_field :name, class: 'form-control'
+        = f.text_field :name, class: 'form-control', required: true
 
     .row.justify-content-center.mb-2
       = f.label :display_name, class: 'form-label col-3'
@@ -14,11 +15,11 @@
     .row.justify-content-center.mb-2
       = f.label :password, class: 'form-label col-3'
       .col-9
-        = f.password_field :password, class: 'form-control'
+        = f.password_field :password, class: 'form-control', required: true
 
     .row.justify-content-center.mb-2
       = f.label :password_confirmation, class: 'form-label col-3'
       .col-9
-        = f.password_field :password_confirmation, class: 'form-control'
+        = f.password_field :password_confirmation, class: 'form-control', required: true
     .d-grid.gap-2.d-block.justify-content-end.m-3
       = f.submit "登録する", class: "btn btn-primary mx-1"
