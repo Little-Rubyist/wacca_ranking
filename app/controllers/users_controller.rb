@@ -25,7 +25,8 @@ class UsersController < ApplicationController
                        .joins(:user_song)
                        .where(user_songs: {user_id: current_user.id})
                        .group(:user_song_id)
-    @songs = @q.result(distinct: true).preload(:song, :user_scores).joins(:song)
+    songs = @q.result(distinct: true).preload(:song, :user_scores).joins(:song)
+    @pagy, @songs = pagy(songs, page: params[:page], items: 25, size: [1, 2, 2, 1])
   end
 
   def scraping

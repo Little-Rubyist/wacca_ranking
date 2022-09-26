@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
+  include Pagy::Backend
 
   private
   # ログイン済みユーザーかどうか確認

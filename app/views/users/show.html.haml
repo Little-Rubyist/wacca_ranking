@@ -39,6 +39,8 @@
             %td #{song.song.diff_type}
             %td #{@scores.find{ |x| x.user_song_id === song.id }&.score}
             %td #{@scores.find{ |x| x.user_song_id === song.id }&.achieve}
+  .d-flex.justify-content-center.mb-2
+    = pagy_bootstrap_nav(@pagy).html_safe
 
 =# 諸々設定とかその辺
 = button_to 'scraping', scraping_user_path
