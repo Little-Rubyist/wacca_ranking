@@ -1,8 +1,13 @@
 .container
   %h1 ログイン
   = form_for(:session, url: sign_in_path) do |f|
-    = f.label :name
-    = f.text_field :name
-    = f.label :password
-    = f.password_field :password
-    = f.submit "Log in"
+    .row.justify-content-center.mb-2
+      = f.label :name, 'ID', class: 'form-label col-3'
+      .col-9
+        = f.text_field :name, class: 'form-control'
+    .row.justify-content-center.mb-2
+      = f.label :password, 'パスワード', class: 'form-label col-3'
+      .col-9
+        = f.password_field :password, class: 'form-control'
+    .d-grid.gap-2.d-block.justify-content-end.m-3
+      = f.submit "ログイン"

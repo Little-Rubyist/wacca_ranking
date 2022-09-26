@@ -15,4 +15,6 @@ window.resetDifficulty = function () {
 
 if (document.getElementById('q_song_difficulty_gteq').value > 1) {
   updateTextInput(document.getElementById('q_song_difficulty_gteq').value)
+} else {
+  resetDifficulty()
 }

@@ -1,9 +1,9 @@
 class ImportScoreFromHtml
-  def initialize(file)
+  def initialize(user, file)
     html = File.read(file)
     page = Nokogiri::HTML.parse(html, nil)
     list = page.css('.playdata__score-list__wrap.grid.muuri').css('li.item')
-    @user = User.first
+    @user = user
 
     favorite_songs = page.css('.playdata__score-list__wrap.grid.muuri')
                          .search('li.filter-favorite').map do |song|
