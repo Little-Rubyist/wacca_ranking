@@ -4,9 +4,11 @@
     .card-body
       %h5.card-title 楽曲スコアインポート
       %h6.card-subtitle.mb-2.text-muted WACCAサイトのHTMLからスコア情報をインポートします
+      %h6.card-subtitle.mb-2.text-muted インポート元のHTMLは必ずCompleteなHTMLファイルにしてください
+      = link_to 'HTMLの保存とインポート方法について', how_to_path
       = form_with model: current_user, url: {action: 'import_score_from_html'}, method: :post do |f|
         = f.label :file, 'ファイル', class: 'form-label'
-        = f.file_field :file, class: 'form-control'
+        = f.file_field :file, class: 'form-control', accept: 'text/html'
         .d-grid.gap-2.d-block.justify-content-end.m-3
           = f.submit 'インポート', class: 'btn btn-primary'
   .card{style: 'width: 80%;'}

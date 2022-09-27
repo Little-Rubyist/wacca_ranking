@@ -1,0 +1,19 @@
+.container
+  %h1 HTMLファイルの保存とスコアのアップロード
+
+  %p
+    = link_to 'https://wacca.marv-games.jp/web/music', 'https://wacca.marv-games.jp/web/music', target: 'blank'
+    へアクセスします
+  %p Ctrl+SまたはCmd+Sを押すと以下のようにエクスプローラーに保存することが出来ます
+  = image_tag 'wacca_page_saving.png', class: "rounded mx-auto d-block"
+
+  %p
+    こちらで
+    %span.text-danger 必ず
+    「Web page, complete」を選択してください
+
+  %p
+    = link_to 'http://localhost:3000/user/settings', 'http://localhost:3000/user/settings'
+    に移動し，
+  = image_tag 'wacca_page_uploading.png', class: 'rounded mx-auto d-block'
+  %p 先程保存したファイルの中にある「file_name.htm」などのHTMLファイルを選択してください

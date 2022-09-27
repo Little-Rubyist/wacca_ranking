@@ -41,6 +41,9 @@ class UsersController < ApplicationController
     WaccaScraping.new
   end
 
+  def how_to_import
+  end
+
   def import_score_from_html
     ImportScoreFromHtml.new(current_user, params[:user][:file].path)
   end

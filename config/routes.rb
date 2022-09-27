@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'sign_in' => "sessions#new"
   post 'sign_in' => "sessions#create"
   post 'sign_out' => "sessions#destroy"
+  get 'how_to' => "users#how_to_import"
   resource :user, only: [:show, :update, :edit] do
     collection do
       post 'scraping' => :scraping
