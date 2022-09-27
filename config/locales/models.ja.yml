@@ -19,6 +19,14 @@ ja:
         hard: Hard
         expert: Expert
         inferno: Inferno
+      song/genre:
+        anime_pop: アニメ/POP
+        vocaloid: ボカロ
+        touhou: 東方アレンジ
+        '2_5_dimension': 2.5次元
+        variety: バラエティ
+        original: オリジナル
+        tanoc: HARDCORE TANO*C
       song_score/achieve:
         clear: Clear
         missless: Missless

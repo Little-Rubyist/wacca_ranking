@@ -1,3 +1,23 @@
-%h1 Songs#index
-%p Find me in app/views/songs/index.html.haml
-=# 楽曲検索ができる．ログインしてたら自分のスコアも出す
+.container
+  %h1 楽曲一覧
+  .table-responsive
+    %table.table
+      %thead
+        %tr
+          %th{scope: "col"} title
+          %th{scope: "col"} genre
+          %th{scope: "col"} normal
+          %th{scope: "col"} hard
+          %th{scope: "col"} expert
+          %th{scope: "col"} inferno
+      %tbody
+        - @songs.each do |song|
+          %tr{class: ('bg-secondary' unless song.can_play_offline )}
+            %th{scope: 'row'} #{song.title}
+            %td #{Song.human_attribute_enum_value(:genre, song.genre)}
+            %td #{@normal_diff.find{|s| s[:music_id] == song.music_id}[:diff]}
+            %td #{@hard_diff.find{|s| s[:music_id] == song.music_id}[:diff]}
+            %td #{@expert_diff.find{|s| s[:music_id] == song.music_id}[:diff]}
+            %td #{@inferno_diff.find{|s| s[:music_id] == song.music_id}.nil? ? '' : @inferno_diff.find{|s| s[:music_id] == song.music_id}[:diff]}
+  .d-flex.justify-content-center.mb-2
+    = pagy_bootstrap_nav(@pagy).html_safe
