@@ -46,6 +46,12 @@ class UsersController < ApplicationController
 
   def import_score_from_html
     ImportScoreFromHtml.new(current_user, params[:user][:file].path)
+    redirect_to user_path, success: 'インポートが終了しました'
+  end
+
+  def import_score_from_csv
+    ImportScoreFromCsv.new(current_user, params[:user][:file].path)
+    redirect_to user_path, success: 'インポートが終了しました'
   end
 
   private

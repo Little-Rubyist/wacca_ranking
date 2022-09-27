@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       post 'scraping' => :scraping
       get 'settings' => :setting
       post :import_score_from_html
+      post :import_score_from_csv
     end
   end
   resources :songs, only: [:show, :index]

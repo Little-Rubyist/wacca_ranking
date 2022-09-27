@@ -2,13 +2,26 @@
   %h1 設定
   .card.mb-3{style: "width: 80%;"}
     .card-body
-      %h5.card-title 楽曲スコアインポート
-      %h6.card-subtitle.mb-2.text-muted WACCAサイトのHTMLからスコア情報をインポートします
+      %h5.card-title 楽曲スコアインポート(HTML)
+      %h6.card-subtitle.mb-2.text-muted WACCAサイトのHTMLから楽曲情報やスコアをインポートします
       %h6.card-subtitle.mb-2.text-muted インポート元のHTMLは必ずCompleteなHTMLファイルにしてください
-      = link_to 'HTMLの保存とインポート方法について', how_to_path
+      %h6.card-subtitle.mb-2.text-muted インポートされるもの：スコア，お気に入り設定，FC状況
+      = link_to 'HTMLの保存とインポート方法について', how_to_path(anchor: 'how-to-import-html')
       = form_with model: current_user, url: {action: 'import_score_from_html'}, method: :post do |f|
         = f.label :file, 'ファイル', class: 'form-label'
         = f.file_field :file, class: 'form-control', accept: 'text/html'
+        .d-grid.gap-2.d-block.justify-content-end.m-3
+          = f.submit 'インポート', class: 'btn btn-primary'
+  .card.mb-3{style: "width: 80%;"}
+    .card-body
+      %h5.card-title 楽曲スコアインポート(CSV)
+      %h6.card-subtitle.mb-2.text-muted WACCA RATING ANALYZERからスコア情報をインポートします
+      %h6.card-subtitle.mb-2.text-muted CSVをエクスポートしたものをアップロードしてください
+      %h6.card-subtitle.mb-2.text-muted インポートされるもの：スコア
+      = link_to 'CSVの保存とインポート方法について', how_to_path(anchor: 'how-to-import-csv')
+      = form_with model: current_user, url: {action: 'import_score_from_csv'}, method: :post do |f|
+        = f.label :file, 'ファイル', class: 'form-label'
+        = f.file_field :file, class: 'form-control', accept: 'text/csv'
         .d-grid.gap-2.d-block.justify-content-end.m-3
           = f.submit 'インポート', class: 'btn btn-primary'
   .card{style: 'width: 80%;'}
