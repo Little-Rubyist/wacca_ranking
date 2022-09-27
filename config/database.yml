@@ -28,5 +28,6 @@ test:
 production:
   <<: *default
   database: wacca_ranking_production
-  username: myapp
+  host: <%= Rails.application.credentials.dig(:database, :host) %>
+  username: admin
   password: <%= Rails.application.credentials.dig(:database, :password) %>
