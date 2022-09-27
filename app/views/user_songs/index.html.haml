@@ -1,0 +1,53 @@
+.container
+  %h1 My Page
+  = search_form_for @q, url: user_songs_path do |f|
+    .card
+      .card-body
+        %h5.card-title 検索
+        .row
+          .col-lg-3
+            = f.label :song_difficulty_gteq, 'レベル', class: 'form-label'
+            %output#difficulty-value-id{name: 'difficultyValue'} 未選択
+            %a.btn.btn-outline-secondary.btn-sm{onclick: 'resetDifficulty()'} リセット
+            = f.range_field :song_difficulty_gteq, { min: 1, max: 15, step: 0.1, oninput: 'updateTextInput(this.value)', class: 'form-range' }
+          .col-lg-3.col-md-4
+            = f.label :song_diff_type_eq, '難易度', class: 'form-label'
+            = f.select :song_diff_type_eq, Song.diff_types.map { |k, v| [Song.human_attribute_enum_value(:diff_type, k), v] }.to_h, {include_blank: true},  {class: 'form-select'}
+          .col-lg-3.col-md-4
+            = f.label :song_title_cont, 'タイトル', class: 'form-label'
+            = f.search_field :song_title_cont, class: 'form-control'
+          .col-lg-3.col-md-4
+            = f.label :user_scores_achieve_eq, 'FC状況', class: 'form-label'
+            = f.select :user_scores_achieve_eq, UserScore.achieves.map { |k, v| [UserScore.human_attribute_enum_value(:achieve, k), v] }.to_h, {include_blank: true}, {class: 'form-select'}
+          .col-lg-3.col-md-6
+            .row
+              .col
+                = f.label :is_favorite_true, 'お気に入りのみ', class: 'form-label'
+                = f.check_box :is_favorite_true, {class: 'form-check-input'}, 1, nil
+            .row
+              .col
+                = f.label :song_can_play_offline_true, 'オフライン曲のみ', class: 'form-label'
+                = f.check_box :song_can_play_offline_true, {class: 'form-check-input'}, 1, nil
+        .d-grid.gap-2.d-block.justify-content-end.m-3
+          = f.submit '検索', class: 'btn btn-primary'
+  .table-responsive
+    %table.table
+      %thead
+        %tr
+          %th{scope: "col"} タイトル
+          %th{scope: "col"} ジャンル
+          %th{scope: "col"} 譜面定数
+          %th{scope: "col"} 難易度
+          %th{scope: "col"} スコア
+          %th{scope: "col"} FC
+      %tbody
+        - @songs.each do |song|
+          %tr
+            %th{scope: 'row'} #{song.song.title}
+            %td #{Song.human_attribute_enum_value(:genre, song.song.genre)}
+            %td #{song.song.difficulty}
+            %td #{Song.human_attribute_enum_value(:diff_type, song.song.diff_type)}
+            %td #{show_score(song)}
+            %td #{show_archive_text(song)}
+  .d-flex.justify-content-center.mb-2
+    = pagy_bootstrap_nav(@pagy).html_safe

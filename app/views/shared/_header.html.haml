@@ -12,7 +12,7 @@
             %a.nav-link.active{href: sign_in_path} ログイン
         - if logged_in?
           %li.nav-item
-            %a.nav-link.active{href: user_path} ホーム
+            %a.nav-link.active{href: user_songs_path} ホーム
         %li.nav-item
           %a.nav-link.active{href: songs_path} 楽曲一覧
         %li.nav-item.dropdown
@@ -33,4 +33,4 @@
             %li.nav-item
               = link_to 'ログアウト', sign_out_path, {method: :post, class: 'nav-link active'}
             %li.nav-item
-              %a.nav-link.active{href: settings_user_path} 設定
+              %a.nav-link.active{href: settings_users_path} 設定

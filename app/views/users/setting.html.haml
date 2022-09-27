@@ -28,7 +28,7 @@
     .card-body
       %h5.card-title ユーザー情報
       %p.text-muted パスワード変更は開発者にご連絡ください
-      = form_with model: current_user, url: user_path do |f|
+      = form_with model: current_user, url: user_path(current_user) do |f|
         = f.label :display_name, class: 'form-label'
         = f.text_field :display_name, class: 'form-control'
         .d-grid.gap-2.d-block.justify-content-end.m-3

@@ -6,13 +6,15 @@ Rails.application.routes.draw do
   post 'sign_in' => "sessions#create"
   post 'sign_out' => "sessions#destroy"
   get 'how_to' => "users#how_to_import"
-  resource :user, only: [:show, :update, :edit] do
+  resources :users, only: [:show, :update, :edit] do
     collection do
       post 'scraping' => :scraping
       get 'settings' => :setting
       post :import_score_from_html
       post :import_score_from_csv
     end
+  end
+  resources :user_songs, only: [:index, :show, :update] do
   end
   resources :songs, only: [:show, :index]
   get 'home/index'
