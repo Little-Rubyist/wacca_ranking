@@ -17,16 +17,16 @@
           %a.nav-link.active{href: songs_path} 楽曲一覧
         %li.nav-item.dropdown
           %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
-            Dropdown
+            その他
           %ul.dropdown-menu
             %li
-              %a.dropdown-item{:href => "#"} Action
+              %a.dropdown-item{:href => '#'} お知らせ
             %li
-              %a.dropdown-item{:href => "#"} Another action
+              %a.dropdown-item{:href => agreement_path} 利用規約
             %li
               %hr.dropdown-divider/
             %li
-              %a.dropdown-item{:href => "#"} Something else here
+              %a.dropdown-item{:href => policies_path} 個人情報保護方針
       - if logged_in?
         .d-flex
           %ul.navbar-nav.me-auto.mb-2.mb-lg-0

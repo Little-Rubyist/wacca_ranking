@@ -15,4 +15,7 @@ Rails.application.routes.draw do
     end
   end
   resources :songs, only: [:show, :index]
+  get 'home/index'
+  get 'policies' => 'home#policies'
+  get 'agreement' => 'home#agreement'
 end
