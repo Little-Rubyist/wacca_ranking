@@ -1,4 +1,5 @@
 class UserSongsController < ApplicationController
+  before_action :logged_in_user, only: [:index, :show]
   def index
     if params[:q].nil?
       params[:q] = {}
@@ -15,6 +16,8 @@ class UserSongsController < ApplicationController
   end
 
   def show
-
+    user_song = UserSong.find(params[:id])
+    @song = user_song.song
+    @scores = user_song.user_scores
   end
 end

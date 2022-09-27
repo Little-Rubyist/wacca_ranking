@@ -1,0 +1,25 @@
+.container
+  %h1 楽曲詳細
+  .d-grid.gap-2.d-block.justify-content-end.m-3
+    = button_to '追加', new_user_score_path, method: :get, params: {user_song_id: params[:id]}, class: 'btn btn-primary'
+  %ul.list-group
+    %li.list-group-item タイトル：#{@song.title}
+    %li.list-group-item ジャンル：#{Song.human_attribute_enum_value(:genre, @song.genre)}
+    %li.list-group-item レベル：#{Song.human_attribute_enum_value(:diff_type, @song.diff_type)}
+    %li.list-group-item 難易度：#{@song.difficulty}
+
+  %h3 スコア履歴
+
+  .table-responsive
+    %table.table
+      %thead
+        %tr
+          %th{scope: 'col'} 登録日時
+          %th{scope: 'col'} スコア
+          %th{scope: 'col'} FC
+      %tbody
+        - @scores.each do |score|
+          %tr
+            %td #{score.created_at}
+            %td #{score.score}
+            %td #{show_archive_text(score)}

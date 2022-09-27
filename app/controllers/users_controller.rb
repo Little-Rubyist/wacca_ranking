@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:show, :update, :setting, :import_score_from_html, :import_score_from_csv]
+  before_action :logged_in_user, only: [:update, :setting, :import_score_from_html, :import_score_from_csv]
   def new
     redirect_to user_songs_path if logged_in?
     @user = User.new

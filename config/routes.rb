@@ -14,8 +14,8 @@ Rails.application.routes.draw do
       post :import_score_from_csv
     end
   end
-  resources :user_songs, only: [:index, :show, :update] do
-  end
+  resources :user_songs, only: [:index, :show, :update]
+  resource :user_score, only: [:new, :create]
   resources :songs, only: [:show, :index]
   get 'home/index'
   get 'policies' => 'home#policies'
