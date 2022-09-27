@@ -2,24 +2,32 @@
   %h1 アカウント登録
   = form_with model: @user, url: sign_up_url do |f|
     = render 'shared/error_messages', object: f.object
-    .row.justify-content-center.mb-2
+    .row.mb-2
       = f.label :name, class: 'form-label col-3'
       .col-9
         = f.text_field :name, class: 'form-control', required: true
 
-    .row.justify-content-center.mb-2
+    .row.mb-2
       = f.label :display_name, class: 'form-label col-3'
       .col-9
         = f.text_field :display_name, class: 'form-control'
 
-    .row.justify-content-center.mb-2
+    .row.mb-2
       = f.label :password, class: 'form-label col-3'
       .col-9
         = f.password_field :password, class: 'form-control', required: true
 
-    .row.justify-content-center.mb-2
+    .row.mb-2
       = f.label :password_confirmation, class: 'form-label col-3'
       .col-9
         = f.password_field :password_confirmation, class: 'form-control', required: true
+
+    .row.text-center.text-muted
+      %p
+        登録した時点で
+        = link_to '利用規約', agreement_path, target: '_blank'
+        と
+        = link_to 'プライバシーポリシー', policies_path, target: '_blank'
+        に同意したものとみなします。
     .d-grid.gap-2.d-block.justify-content-end.m-3
       = f.submit "登録する", class: "btn btn-primary mx-1"
