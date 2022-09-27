@@ -77,6 +77,15 @@ gem 'ransack'
 gem 'pagy'
 gem 'rails-i18n'
 
+# for deploy
+group :development do
+  gem 'capistrano', "~> 3.10", require: false
+  gem 'capistrano-rbenv', '~> 2.2'
+  gem 'capistrano-bundler', '~> 2.0'
+  gem 'capistrano-rails', "~> 1.6", require: false
+  gem 'capistrano3-puma'
+end
+
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
