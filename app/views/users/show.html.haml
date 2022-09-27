@@ -19,24 +19,35 @@
           .col-lg-3.col-md-4
             = f.label :user_scores_achieve_eq, 'FC状況', class: 'form-label'
             = f.select :user_scores_achieve_eq, UserScore.achieves.map { |k, v| [UserScore.human_attribute_enum_value(:achieve, k), v] }.to_h, {include_blank: true}, {class: 'form-select'}
+          .col-lg-3.col-md-6
+            .row
+              .col
+                = f.label :is_favorite_true, 'お気に入りのみ', class: 'form-label'
+                = f.check_box :is_favorite_true, class: 'form-check-input'
+            .row
+              .col
+                = f.label :song_can_play_offline_true, 'オフライン曲のみ', class: 'form-label'
+                = f.check_box :song_can_play_offline_true, class: 'form-check-input'
         .d-grid.gap-2.d-block.justify-content-end.m-3
           = f.submit '検索', class: 'btn btn-primary'
   .table-responsive
     %table.table
       %thead
         %tr
-          %th{scope: "col"} title
-          %th{scope: "col"} diff
-          %th{scope: "col"} diff_type
-          %th{scope: "col"} score
-          %th{scope: "col"} achieve
+          %th{scope: "col"} タイトル
+          %th{scope: "col"} ジャンル
+          %th{scope: "col"} 譜面定数
+          %th{scope: "col"} 難易度
+          %th{scope: "col"} スコア
+          %th{scope: "col"} FC
       %tbody
         - @songs.each do |song|
           %tr
             %th{scope: 'row'} #{song.song.title}
+            %td #{Song.human_attribute_enum_value(:genre, song.song.genre)}
             %td #{song.song.difficulty}
-            %td #{song.song.diff_type}
-            %td #{@scores.find{ |x| x.user_song_id === song.id }&.score}
-            %td #{@scores.find{ |x| x.user_song_id === song.id }&.achieve}
+            %td #{Song.human_attribute_enum_value(:diff_type, song.song.diff_type)}
+            %td #{show_score(song)}
+            %td #{show_archive_text(song)}
   .d-flex.justify-content-center.mb-2
     = pagy_bootstrap_nav(@pagy).html_safe
