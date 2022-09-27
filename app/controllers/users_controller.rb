@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:show, :update, :setting, :import_score_from_html, :import_score_from_csv]
   def new
     redirect_to user_path if logged_in?
     @user = User.new
@@ -9,9 +10,10 @@ class UsersController < ApplicationController
     if @user.save
       UserSong.insert_all(Song.all.map{|song| {user_id: @user.id, song_id: song.id, is_favorite: false}})
       log_in @user
-      redirect_to user_path, notice: 'ユーザーを登録しました'
+      redirect_to user_path, flash: { success: 'ユーザーを登録しました' }
     else
-      render :new, notice: '登録に失敗しました'
+      flash.now[:danger] = '更新に失敗しました'
+      render :new
     end
   end
 
@@ -31,7 +33,12 @@ class UsersController < ApplicationController
   end
 
   def update
-
+    if current_user.update(user_params)
+      redirect_to settings_user_path, flash: { success: 'ユーザー情報を更新しました' }
+    else
+      flash.now[:danger] = '更新に失敗しました'
+      render :setting
+    end
   end
 
   def setting
@@ -46,19 +53,21 @@ class UsersController < ApplicationController
 
   def import_score_from_html
     ImportScoreFromHtml.new(current_user, params[:user][:file].path)
-    redirect_to user_path, success: 'インポートが終了しました'
+    redirect_to user_path, flash: { success: 'インポートが終了しました' }
   end
 
   def import_score_from_csv
     ImportScoreFromCsv.new(current_user, params[:user][:file].path)
-    redirect_to user_path, success: 'インポートが終了しました'
+    redirect_to user_path, flash: { success: 'インポートが終了しました' }
   end
 
   private
 
   def user_params
     params.require(:user).permit(:name,
+                                 :display_name,
                                  :password,
-                                 :password_confirmation)
+                                 :password_confirmation,
+                                 :current_password)
   end
 end

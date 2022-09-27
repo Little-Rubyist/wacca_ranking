@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
   include Pagy::Backend
+  add_flash_types :success, :info, :warning, :danger
 
   private
   # ログイン済みユーザーかどうか確認
