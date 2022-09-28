@@ -14,7 +14,11 @@ Rails.application.routes.draw do
       post :import_score_from_csv
     end
   end
-  resources :user_songs, only: [:index, :show, :update]
+  resources :user_songs, only: [:index, :show, :update] do
+    collection do
+      put '/:id/toggle_favorite' => :toggle_favorite
+    end
+  end
   resource :user_score, only: [:new, :create]
   resources :songs, only: [:show, :index]
   get 'home/index'

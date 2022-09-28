@@ -16,8 +16,17 @@ class UserSongsController < ApplicationController
   end
 
   def show
+    @user_song = UserSong.find(params[:id])
+    @song = @user_song.song
+    @scores = @user_song.user_scores
+  end
+
+  def toggle_favorite
     user_song = UserSong.find(params[:id])
-    @song = user_song.song
-    @scores = user_song.user_scores
+    if user_song.update(is_favorite: !user_song.is_favorite)
+      redirect_to user_songs_path(user_song), flash: {success: '変更しました'}
+    else
+      render :show, flash: {danger: '更新に失敗しました'}
+    end
   end
 end
