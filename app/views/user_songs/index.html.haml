@@ -1,5 +1,12 @@
 .container
   %h1 My Page
+  - if Time.current < Time.new(2022, 10, 1)
+    %p
+      情報：公式マイページ閉鎖前に
+      = link_to 'dumper', 'https://w.yello.ooo', target: '_blank'
+      を用いて全情報を保存しておくことをおすすめします．
+    %p 後々にアーカイブページを用意して閲覧できるようにしたいと思っています！
+    %p ダウンロードしたJSONファイルは大切に保管していてください．
   = search_form_for @q, url: user_songs_path do |f|
     .card
       .card-body

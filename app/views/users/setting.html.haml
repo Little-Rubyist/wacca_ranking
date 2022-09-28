@@ -1,5 +1,12 @@
 .container
   %h1 設定
+  - if Time.current < Time.new(2022, 10, 1)
+    %p
+      情報：公式マイページ閉鎖前に
+      = link_to 'dumper', 'https://w.yello.ooo', target: '_blank'
+      を用いて全情報を保存しておくことをおすすめします．
+    %p 今はこちらからのインポートを用意していませんが，後々にアーカイブページを用意して閲覧できるようにしたいと思っています！
+    %p ダウンロードしたJSONファイルは大切に保管していてください．
   .card.mb-3{style: "width: 80%;"}
     .card-body
       %h5.card-title 楽曲スコアインポート(HTML)
