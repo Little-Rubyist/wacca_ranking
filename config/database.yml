@@ -28,6 +28,6 @@ test:
 production:
   <<: *default
   database: wacca_ranking_production
-  host: <%= Rails.application.credentials.dig(:database, :host) %>
+  host: <%= YAML.load(`rails credentials:show`)['database']['host'] %>
   username: admin
-  password: <%= Rails.application.credentials.dig(:database, :password) %>
+  password: <%= YAML.load(`rails credentials:show`)['database']['password'] %>
