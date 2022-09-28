@@ -11,7 +11,7 @@ class CreateSongData::ImportOfflineSongs
       elements.each do |element|
         title = element.search('th a').text
         songs = Song.where(title: title)
-        next if songs.empty?
+        next if songs.blank?
         songs.update_all(can_play_offline: false)
       end
     end

@@ -1,6 +1,7 @@
 module UserSongsHelper
   def index_archive_text(song)
     achieve = @scores.find{ |x| x.user_song_id === song.id }&.achieve
+    return '' if achieve.blank?
     UserScore.human_attribute_enum_value(:achieve, achieve)
   end
 
