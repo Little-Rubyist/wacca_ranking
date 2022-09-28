@@ -10,13 +10,13 @@ require "csv"
 
 songs = []
 CSV.foreach('db/csvs/songs.csv', headers: true) do |row|
-  songs << {title: row[:title],
-            title_english: row[:title_english],
-            ruby: row[:ruby],
-            music_id: row[:music_id],
-            can_play_offline: row[:can_play_offline],
-            genre: row[:genre],
-            diff_type: row[:diff_type],
-            difficulty: row[:difficulty] }
+  songs << {title: row['title'],
+            title_english: row['title_english'],
+            ruby: row['ruby'],
+            music_id: row['music_id'],
+            can_play_offline: row['can_play_offline'],
+            genre: row['genre'],
+            diff_type: row['diff_type'],
+            difficulty: row['difficulty'] }
 end
 Song.insert_all(songs)
