@@ -4,9 +4,9 @@
     %h2.card-title.m-2#how-to-import-html HTMLファイルの保存とスコアのインポート
     .card-body
       %p.text-danger.fs-5
-        PC以外からはHTMLの保存が出来る保証が出来ません．
+        PC, Android以外からはHTMLの保存が出来る保証が出来ません．
       %p.text-danger.fs-5
-        PC以外の方は下記の
+        PC，Android以外の方は下記の
         = link_to 'WACCA RATING ANALYZER', 'https://shimmand.github.io/wacca-rating-analyzer/', target: '_blank'
         を用いたインポート方法をお試しください
 
@@ -14,6 +14,7 @@
         = link_to 'https://wacca.marv-games.jp/web/music', 'https://wacca.marv-games.jp/web/music', target: '_blank'
         へアクセスします
       %p Ctrl+SまたはCmd+Sを押すと以下のようにエクスプローラーに保存することが出来ます
+      %p Androidではサイトのダウンロードを行うとダウンロードフォルダにHTMLファイルが保存出来るようです
       = image_tag 'wacca_page_saving.png', class: "img-fluid rounded mx-auto d-block"
 
       %p
@@ -22,7 +23,7 @@
         「Web page, complete」を選択してください
 
       %p
-        = link_to 'https://wacca.little-rubyist.com/users/settings', 'https://little-rubyist.com/users/settings'
+        = link_to 'https://wacca.little-rubyist.com/users/settings', 'https://wacca.little-rubyist.com/users/settings'
         に移動し，
       = image_tag 'wacca_page_uploading.png', class: 'img-fluid rounded mx-auto d-block'
       %p 楽曲スコアインポート(HTML)のフォームへ先程保存したファイルの中にある「file_name.htm」などのHTMLファイルを選択してください
@@ -42,7 +43,7 @@
       = image_tag 'wacca_rating_analyzer_export_confirm.png', class: 'img-fluid rounded mx-auto d-block'
 
       %p
-        = link_to 'https://wacca.little-rubyist.com/users/settings', 'https://little-rubyist.com/users/settings'
+        = link_to 'https://wacca.little-rubyist.com/users/settings', 'https://wacca.little-rubyist.com/users/settings'
         に移動し，
       = image_tag 'wacca_rating_analyzer_upload.png', class: 'img-fluid rounded mx-auto d-block'
       %p 楽曲スコアインポート(CSV)のフォームへ先程保存したファイルの中にある「file_name.csv」などのCSVファイルを選択してください
