@@ -6,9 +6,27 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
+set :stage, :production
+set :deploy_env, 'production'
+set :rails_env, 'production'
+set :ridgepole_env, fetch(:rails_env)
+set :branch, 'main'
 
+set :ssh_options, {
+  keys: %w(~/.ssh/main-windows.pem),
+  forward_agent: true
+}
 
+server "35.75.129.108",
+       user: "yla_aioi",
+       roles: %w[app db web]
 
+append :linked_files, "config/credentials/production.key"
+# append :linked_dirs, 'db/production'
+
+# set :nginx_config_name, 'wacca_ranking'
+# set :nginx_use_ssl, true
+# set :nginx_downstream_uses_ssl, true
 # role-based syntax
 # ==================
 

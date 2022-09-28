@@ -2,13 +2,32 @@
 lock "~> 3.17.1"
 
 set :application, "wacca_ranking"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :repo_url, "git@github.com:Little-Rubyist/wacca_ranking.git"
+set :rbenv_ruby, '3.1.2'
+set :deploy_to, "~/#{fetch(:application)}"
+set :ridgepole_env, fetch(:rails_env)
 
-# Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+set :nginx_config_name, "#{fetch(:application)}.conf"
+set :nginx_sites_enabled_path, "/etc/nginx/conf.d"
 
-# Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, "/var/www/my_app_name"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets"
+append :linked_files, "config/database.yml"
+
+namespace :deploy do
+  desc "No ActiveRecord override"
+  task :migrate do
+  end
+  task :migrating do
+  end
+end
+
+after 'deploy:publishing', 'ridgepole:ridgepole_apply'
+namespace :ridgepole do
+  desc 'ridgepole apply'
+  task :ridgepole_apply do
+    invoke 'ridgepole:apply'
+  end
+end
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -19,21 +38,3 @@ set :repo_url, "git@example.com:me/my_repo.git"
 
 # Default value for :pty is false
 # set :pty, true
-
-# Default value for :linked_files is []
-# append :linked_files, "config/database.yml", 'config/master.key'
-
-# Default value for linked_dirs is []
-# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "tmp/webpacker", "public/system", "vendor", "storage"
-
-# Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
-
-# Default value for local_user is ENV['USER']
-# set :local_user, -> { `git config user.name`.chomp }
-
-# Default value for keep_releases is 5
-# set :keep_releases, 5
-
-# Uncomment the following to require manually verifying the host key before first deploy.
-# set :ssh_options, verify_host_key: :secure
