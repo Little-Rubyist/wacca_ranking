@@ -4,7 +4,7 @@ lock "~> 3.17.1"
 set :application, "wacca_ranking"
 set :repo_url, "git@github.com:Little-Rubyist/wacca_ranking.git"
 set :rbenv_ruby, '3.1.2'
-set :deploy_to, "~/#{fetch(:application)}"
+set :deploy_to, "/home/yla_aioi/#{fetch(:application)}"
 set :ridgepole_env, fetch(:rails_env)
 
 set :nginx_config_name, "#{fetch(:application)}.conf"
@@ -37,4 +37,4 @@ end
 # set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
 
 # Default value for :pty is false
-# set :pty, true
+set :pty, true

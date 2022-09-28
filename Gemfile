@@ -84,6 +84,7 @@ group :development do
   gem 'capistrano-bundler', '~> 2.0'
   gem 'capistrano-rails', "~> 1.6", require: false
   gem 'capistrano3-puma'
+  gem 'sshkit-sudo'
 end
 
 group :test do

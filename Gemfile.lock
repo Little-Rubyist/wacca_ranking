@@ -282,6 +282,8 @@ GEM
     sshkit (1.21.3)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    sshkit-sudo (0.1.0)
+      sshkit (~> 1.8)
     stimulus-rails (1.0.4)
       railties (>= 6.0.0)
     strscan (3.0.3)
@@ -347,6 +349,7 @@ DEPENDENCIES
   sassc-rails
   selenium-webdriver
   sprockets-rails
+  sshkit-sudo
   stimulus-rails
   turbo-rails
   tzinfo-data
