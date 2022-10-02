@@ -19,6 +19,17 @@ class UserScoresController < ApplicationController
     end
   end
 
+  def destroy
+    user_score = UserScore.find(params[:id])
+    user_song = user_score.user_song
+    if user_score.destroy
+      flash[:success] = 'スコアを削除しました'
+    else
+      flash[:danger] = 'スコアの削除に失敗しました'
+    end
+    redirect_to user_song_path(user_song)
+  end
+
     private
 
     def user_score_params

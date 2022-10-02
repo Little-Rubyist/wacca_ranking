@@ -23,9 +23,12 @@
           %th{scope: 'col'} 登録日時
           %th{scope: 'col'} スコア
           %th{scope: 'col'} FC
+          %th{scope: 'col'}
       %tbody
         - @scores.each do |score|
           %tr
             %td #{score.created_at}
             %td #{score.score}
             %td #{show_archive_text(score)}
+            %td
+              = button_to '削除', user_score_path(score), method: :delete, data: {confirm: '本当に削除しますか？'}, class: 'btn btn-sm btn-danger'

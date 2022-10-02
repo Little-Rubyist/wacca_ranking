@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       put '/:id/toggle_favorite' => :toggle_favorite
     end
   end
-  resource :user_score, only: [:new, :create]
+  resources :user_scores, only: [:new, :create, :destroy]
   resources :songs, only: [:show, :index]
   get 'home/index'
   get 'policies' => 'home#policies'

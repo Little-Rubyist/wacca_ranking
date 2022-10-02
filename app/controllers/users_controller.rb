@@ -12,8 +12,8 @@ class UsersController < ApplicationController
       log_in @user
       redirect_to user_songs_path, flash: { success: 'ユーザーを登録しました' }
     else
-      flash.now[:danger] = '更新に失敗しました'
       render :new
+      flash.now[:danger] = '更新に失敗しました'
     end
   end
 
