@@ -7,7 +7,11 @@ class UserScoresController < ApplicationController
   end
 
   def create
-    if UserScore.create(user_score_params)
+    @user_song = UserSong.find(user_score_params[:user_song_id])
+    @song = @user_song.song
+    @user_score = UserScore.create(user_score_params)
+    @user_score.user_song = @user_song
+    if @user_score.save
       redirect_to user_song_path(user_score_params[:user_song_id]), flash: {success: 'スコアを追加しました'}
     else
       flash.now[:danger] = 'スコアの追加に失敗しました'
