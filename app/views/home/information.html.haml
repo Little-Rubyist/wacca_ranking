@@ -1,0 +1,10 @@
+.container
+  %h1 お知らせ
+  .table-responsive
+    %table.table.align-middle
+      %thead
+        %th{scope: 'col'} 日付
+        %th{scope: 'col'} 内容
+      %tbody
+        - info_files.each do |file|
+          = render "home/information/#{file}"
