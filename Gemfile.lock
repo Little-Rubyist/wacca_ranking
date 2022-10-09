@@ -80,6 +80,7 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.11.5, < 3)
       sassc-rails (>= 2.0.0)
+    bootstrap-table-rails (1.20.2)
     builder (3.2.4)
     capistrano (3.17.1)
       airbrussh (>= 1.0.0)
@@ -326,6 +327,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
   bootstrap
+  bootstrap-table-rails
   capistrano (~> 3.10)
   capistrano-bundler (~> 2.0)
   capistrano-rails (~> 1.6)

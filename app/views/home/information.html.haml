@@ -1,9 +1,14 @@
 .container
   %h1 お知らせ
+  %p
+    検索ではカテゴリや日付，内容の全てで検索が出来ます．
+    %br
+    カテゴリ：新機能, 重要なお知らせ, 修正
   .table-responsive
-    %table.table.align-middle
+    %table.table.align-middle{'data-toggle': 'table', 'data-search': 'true', 'data-pagination': 'true', 'data-page-list': [5, 10, 15, 20], 'data-page-size': 5}
       %thead
         %th{scope: 'col'} 日付
+        %th{scope: 'col'} カテゴリ
         %th{scope: 'col'} 内容
       %tbody
         - info_files.each do |file|
