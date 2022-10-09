@@ -6,6 +6,7 @@ module UserSongsHelper
   end
 
   def show_archive_text(score)
+    return '' if score.achieve.blank?
     UserScore.human_attribute_enum_value(:achieve, score.achieve)
   end
 
