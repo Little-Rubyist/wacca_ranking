@@ -7,4 +7,7 @@ class HomeController < ApplicationController
 
   def agreement
   end
+
+  def information
+  end
 end

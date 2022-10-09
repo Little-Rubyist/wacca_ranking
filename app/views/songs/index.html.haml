@@ -16,8 +16,8 @@
           .col-lg-3
             = f.label :difficulty_gteq, 'レベル', class: 'form-label'
             %output#difficulty-value-id{name: 'difficultyValue'} 未選択
-            %a.btn.btn-outline-secondary.btn-sm{onclick: 'resetDifficulty()'} リセット
-            = f.range_field :difficulty_gteq, { min: 1, max: 15, step: 0.1, oninput: 'updateTextInput(this.value)', class: 'form-range' }
+            %a.btn.btn-outline-secondary.btn-sm#reset-difficulty-value リセット
+            = f.range_field :difficulty_gteq, { min: 1, max: 15, step: 0.1, class: 'form-range' }
           .col-lg-3.col-md-4
             = f.label :diff_type_eq, '難易度', class: 'form-label'
             = f.select :diff_type_eq, Song.diff_types.map { |k, v| [Song.human_attribute_enum_value(:diff_type, k), v] }.to_h, {include_blank: true},  {class: 'form-select'}

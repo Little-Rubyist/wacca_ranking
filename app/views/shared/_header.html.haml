@@ -20,11 +20,11 @@
             その他
           %ul.dropdown-menu
             %li
-              %a.dropdown-item{:href => '#'} お知らせ
-            %li
-              %a.dropdown-item{:href => agreement_path} 利用規約
+              %a.dropdown-item{:href => information_path} お知らせ
             %li
               %hr.dropdown-divider/
+            %li
+              %a.dropdown-item{:href => agreement_path} 利用規約
             %li
               %a.dropdown-item{:href => policies_path} 個人情報保護方針
       - if logged_in?

@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'policies' => 'home#policies'
   get 'agreement' => 'home#agreement'
+  get 'information' => 'home#information'
 end

@@ -72,6 +72,7 @@ gem "selenium-webdriver"
 gem "webdrivers"
 gem 'nokogiri'
 gem 'bootstrap'
+gem "bootstrap-table-rails"
 gem 'mini_racer'
 gem 'ransack'
 gem 'pagy'
