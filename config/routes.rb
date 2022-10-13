@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   get 'policies' => 'home#policies'
   get 'agreement' => 'home#agreement'
   get 'information' => 'home#information'
+  get 'sponsors' => 'home#sponsors'
 end
