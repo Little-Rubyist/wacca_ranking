@@ -10,4 +10,7 @@ class HomeController < ApplicationController
 
   def information
   end
+
+  def sponsors
+  end
 end
