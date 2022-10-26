@@ -29,9 +29,17 @@
               %a.dropdown-item{:href => agreement_path} 利用規約
             %li
               %a.dropdown-item{:href => policies_path} 個人情報保護方針
-      - if logged_in?
-        .d-flex
-          %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+      .d-flex
+        %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+          %li.nav-item.dropdown
+            %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
+              language
+            %ul.dropdown-menu
+              %li
+                %a.dropdown-item{:href => "#{request.path_info}?locale=ja"} 日本語
+              %li
+                %a.dropdown-item{:href => "#{request.path_info}?locale=en"} English
+          - if logged_in?
             %li.nav-item
               = link_to 'ログアウト', sign_out_path, {method: :post, class: 'nav-link active'}
             %li.nav-item

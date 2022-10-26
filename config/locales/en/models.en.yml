@@ -1,0 +1,7 @@
+en:
+  activerecord:
+    models:
+      user: User
+      song: Song
+      song_score: Score
+

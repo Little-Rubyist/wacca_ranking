@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    attributes:
+      user_score:
+        score: Score
+        achieve: Achieve
+      user_score/achieve:
+        clear: Clear
+        missless: Missless
+        full_combo: Full Combo
+        all_marvelous: All Marvelous

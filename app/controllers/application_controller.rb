@@ -2,6 +2,15 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include Pagy::Backend
   add_flash_types :success, :info, :warning, :danger
+  before_action :set_locale
+
+  def set_locale
+    I18n.locale = locale
+  end
+
+  def locale
+    @locale ||= (params[:locale] || I18n.default_locale)
+  end
 
   private
   # ログイン済みユーザーかどうか確認

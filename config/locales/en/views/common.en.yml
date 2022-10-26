@@ -1,0 +1,6 @@
+en:
+  views:
+    common:
+      search: Search
+      search_button: Search
+      reset_button: Reset

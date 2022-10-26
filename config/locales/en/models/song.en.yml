@@ -1,0 +1,25 @@
+en:
+  activerecord:
+    attributes:
+      song:
+        title: Title(Japanese)
+        title_english: Title
+        ruby: Ruby
+        music_id: Music ID
+        can_play_offline: Can play offline
+        genre: Genre
+        diff_type: Diff type
+        difficulty: Difficulty
+      song/diff_type:
+        normal: Normal
+        hard: Hard
+        expert: Expert
+        inferno: Inferno
+      song/genre:
+        anime_pop: Anime/POP
+        vocaloid: Vocaloid
+        touhou: Touhou-arrange
+        '2_5_dimension': 2.5 dimension
+        variety: Variety
+        original: Original
+        tanoc: HARDCORE TANO*C

@@ -42,7 +42,10 @@
       %thead
         %tr
           %th{scope: "col"}
-            = Song.human_attribute_name(:title)
+            - if params[:locale] == 'en'
+              = Song.human_attribute_name(:title_english)
+            - else
+              = Song.human_attribute_name(:title)
           %th{scope: "col"}
             = Song.human_attribute_name(:genre)
           %th{scope: "col"}
@@ -57,7 +60,10 @@
         - @songs.each do |song|
           %tr
             %th{scope: 'row'}
-              = link_to song.song.title, user_song_path(song.id), class: 'text-black'
+              - if params[:locale] == 'en' && song.song.title_english.present?
+                = link_to song.song.title_english, user_song_path(song.id), class: 'text-black'
+              - else
+                = link_to song.song.title, user_song_path(song.id), class: 'text-black'
             %td #{Song.human_attribute_enum_value(:genre, song.song.genre)}
             %td #{song.song.difficulty}
             %td #{Song.human_attribute_enum_value(:diff_type, song.song.diff_type)}
