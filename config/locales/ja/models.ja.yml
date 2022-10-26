@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      song: 楽曲
+      song_score: 楽曲スコア
+

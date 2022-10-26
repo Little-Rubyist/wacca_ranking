@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    attributes:
+      song_score:
+        achieve: クリア状態
+      song_score/achieve:
+        clear: Clear
+        missless: Missless
+        full_combo: Full Combo
+        all_marvelous: All Marvelous
