@@ -9,7 +9,7 @@ ja:
         can_play_offline: オフラインプレイ可
         genre: ジャンル
         diff_type: 難易度
-        difficulty: レベル
+        difficulty: 譜面定数
       song/diff_type:
         normal: Normal
         hard: Hard

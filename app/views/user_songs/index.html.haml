@@ -1,56 +1,58 @@
 .container
   %h1 My Page
-  - if Time.current < Time.new(2022, 10, 1)
-    %p
-      情報：公式マイページ閉鎖前に
-      = link_to 'dumper', 'https://w.yello.ooo', target: '_blank'
-      を用いて全情報を保存しておくことをおすすめします．
-    %p 後々にアーカイブページを用意して閲覧できるようにしたいと思っています！
-    %p ダウンロードしたJSONファイルは大切に保管していてください．
   = search_form_for @q, url: user_songs_path do |f|
     .card
       .card-body
-        %h5.card-title 検索
+        %h5.card-title
+          = t('views.common.search')
         .row
           .col-lg-4
-            = f.label :song_difficulty_gteq, 'レベル', class: 'form-label'
-            %output#difficulty-value-id{name: 'difficultyValue'} 未選択
-            %a.btn.btn-outline-secondary.btn-sm#reset-difficulty-value リセット
+            = f.label :song_difficulty_gteq, t('views.user_songs.song_difficulty_gteq'), class: 'form-label'
+            %output#difficulty-value-id{name: 'difficultyValue'}
+              = t('views.user_songs.unselect')
+            %a.btn.btn-outline-secondary.btn-sm#reset-difficulty-value
+              = t('views.common.reset_button')
             = f.range_field :song_difficulty_gteq, { min: 1, max: 15, step: 0.1, class: 'form-range' }
           .col-lg-4.col-md-4
             = f.label :song_diff_type_eq, t('views.user_songs.song_diff_type_eq'), class: 'form-label'
             = f.select :song_diff_type_eq, Song.diff_types.map { |k, v| [Song.human_attribute_enum_value(:diff_type, k), v] }.to_h, {include_blank: true},  {class: 'form-select'}
           .col-lg-4.col-md-4
-            = f.label :song_title_cont, 'タイトル', class: 'form-label'
+            = f.label :song_title_cont, t('views.user_songs.song_title_cont'), class: 'form-label'
             = f.search_field :song_title_cont, class: 'form-control'
         .row
           .col-lg-4.col-md-4
-            = f.label :song_genre_eq, 'ジャンル', class: 'form-label'
+            = f.label :song_genre_eq, t('views.user_songs.song_genre_eq'), class: 'form-label'
             = f.select :song_genre_eq, Song.genres.map { |k, v| [Song.human_attribute_enum_value(:genre, k), v] }.to_h, {include_blank: true},  {class: 'form-select'}
           .col-lg-4.col-md-4
-            = f.label :user_scores_achieve_eq, 'FC状況', class: 'form-label'
+            = f.label :user_scores_achieve_eq, t('views.user_songs.user_scores_achieve_eq'), class: 'form-label'
             = f.select :user_scores_achieve_eq, UserScore.achieves.map { |k, v| [UserScore.human_attribute_enum_value(:achieve, k), v] }.to_h, {include_blank: true}, {class: 'form-select'}
           .col-lg-4.col-md-6.mt-3
             .row
               .col
-                = f.label :is_favorite_true, 'お気に入りのみ', class: 'form-label'
+                = f.label :is_favorite_true, t('views.user_songs.is_favorite_true'), class: 'form-label'
                 = f.check_box :is_favorite_true, {class: 'form-check-input'}, 1, nil
             .row
               .col
-                = f.label :song_can_play_offline_true, 'オフライン曲のみ', class: 'form-label'
+                = f.label :song_can_play_offline_true, t('views.user_songs.song_can_play_offline_true'), class: 'form-label'
                 = f.check_box :song_can_play_offline_true, {class: 'form-check-input'}, 1, nil
         .d-grid.gap-2.d-block.justify-content-end.m-3
-          = f.submit '検索', class: 'btn btn-primary'
+          = f.submit t('views.common.search_button'), class: 'btn btn-primary'
   .table-responsive
     %table.table
       %thead
         %tr
-          %th{scope: "col"} タイトル
-          %th{scope: "col"} ジャンル
-          %th{scope: "col"} 譜面定数
-          %th{scope: "col"} 難易度
-          %th{scope: "col"} スコア
-          %th{scope: "col"} FC
+          %th{scope: "col"}
+            = Song.human_attribute_name(:title)
+          %th{scope: "col"}
+            = Song.human_attribute_name(:genre)
+          %th{scope: "col"}
+            = Song.human_attribute_name(:difficulty)
+          %th{scope: "col"}
+            = Song.human_attribute_name(:diff_type)
+          %th{scope: "col"}
+            = UserScore.human_attribute_name(:score)
+          %th{scope: "col"}
+            = UserScore.human_attribute_name(:archive)
       %tbody
         - @songs.each do |song|
           %tr

@@ -1,4 +1,11 @@
 ja:
   views:
     user_songs:
+      song_difficulty_gteq: 譜面定数
       song_diff_type_eq: 難易度
+      song_title_cont: タイトル
+      song_genre_eq: ジャンル
+      user_scores_achieve_eq: FC状況
+      is_favorite_true: お気に入りのみ
+      song_can_play_offline_true: オフライン曲のみ
+      unselect: 未選択
