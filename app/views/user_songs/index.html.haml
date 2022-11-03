@@ -7,6 +7,7 @@
           = t('views.common.search')
         .row
           .col-lg-4
+            = hidden_field_tag :locale, params[:locale]
             = f.label :song_difficulty_gteq, t('views.search.song_difficulty_gteq'), class: 'form-label'
             %output#difficulty-value-id{name: 'difficultyValue'}
               = t('views.user_songs.unselect')

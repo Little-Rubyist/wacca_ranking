@@ -1,0 +1,7 @@
+en:
+  views:
+    songs:
+      title: Song List
+      unselect: Unselect
+      or_more: or more
+      hint: 'Tip: You can search for both difficulty and level at the same time, e.g. "Expert Lv13 or higher"'
