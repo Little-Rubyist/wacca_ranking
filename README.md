@@ -44,6 +44,8 @@ Things you may want to cover:
 
   Delete the Japanese part of the `app/views` and add the translated text in `config/locales` according to Rails i18n
 
+  Reloading will regenerate `translation.js` so the same locales can be used in JS files (perhaps you should reboot instance)
+
   I have prepared an i18n configuration for `views/user_songs/index.html.haml` as a reference (please add other languages setting)
 
 * Contributing
