@@ -1,53 +1,62 @@
 .container
   %h1 楽曲一覧
   %p ヒント：難易度とレベルを同時に検索することで「Expert Lv13以上」のような検索ができます
-  - if Time.current < Time.new(2022, 10, 1)
-    %p
-      情報：公式マイページ閉鎖前に
-      = link_to 'dumper', 'https://w.yello.ooo', target: '_blank'
-      を用いて全情報を保存しておくことをおすすめします．
-    %p 後々にアーカイブページを用意して閲覧できるようにしたいと思っています！
-    %p ダウンロードしたJSONファイルは大切に保管していてください．
   = search_form_for @q, url: songs_path do |f|
     .card
       .card-body
-        %h5.card-title 検索
+        %h5.card-title
+          = I18n.t('views.common.search')
         .row
           .col-lg-3
-            = f.label :difficulty_gteq, 'レベル', class: 'form-label'
-            %output#difficulty-value-id{name: 'difficultyValue'} 未選択
-            %a.btn.btn-outline-secondary.btn-sm#reset-difficulty-value リセット
+            = f.label :difficulty_gteq, I18n.t('views.search.song_difficulty_gteq'), class: 'form-label'
+            %output#difficulty-value-id{name: 'difficultyValue'}
+              = I18n.t('views.user_songs.unselect')
+            %a.btn.btn-outline-secondary.btn-sm#reset-difficulty-value
+              = I18n.t('views.common.reset_button')
             = f.range_field :difficulty_gteq, { min: 1, max: 15, step: 0.1, class: 'form-range' }
           .col-lg-3.col-md-4
-            = f.label :diff_type_eq, '難易度', class: 'form-label'
+            = f.label :diff_type_eq, I18n.t('views.search.song_diff_type_eq'), class: 'form-label'
             = f.select :diff_type_eq, Song.diff_types.map { |k, v| [Song.human_attribute_enum_value(:diff_type, k), v] }.to_h, {include_blank: true},  {class: 'form-select'}
           .col-lg-3.col-md-4
-            = f.label :genre_eq, 'ジャンル', class: 'form-label'
+            = f.label :genre_eq, I18n.t('views.search.song_genre_eq'), class: 'form-label'
             = f.select :genre_eq, Song.genres.map { |k, v| [Song.human_attribute_enum_value(:genre, k), v]}.to_h, {include_blank: true}, {class: 'form-select'}
           .col-lg-3.col-md-4
-            = f.label :title_cont, 'タイトル', class: 'form-label'
+            = f.label :title_cont, I18n.t('views.search.song_title_cont'), class: 'form-label'
             = f.search_field :title_cont, class: 'form-control'
           .col-lg-3.col-md-6
             .row
               .col
-                = f.label :can_play_offline_true, 'オフライン曲のみ', class: 'form-label'
+                = f.label :can_play_offline_true, I18n.t('views.search.song_can_play_offline_true'), class: 'form-label'
                 = f.check_box :can_play_offline_true, {class: 'form-check-input'}, 1, nil
         .d-grid.gap-2.d-block.justify-content-end.m-3
-          = f.submit '検索', class: 'btn btn-primary'
+          = f.submit I18n.t('views.common.search_button'), class: 'btn btn-primary'
   .table-responsive
     %table.table
       %thead
         %tr
-          %th{scope: "col"} title
-          %th{scope: "col"} genre
-          %th{scope: "col"} normal
-          %th{scope: "col"} hard
-          %th{scope: "col"} expert
-          %th{scope: "col"} inferno
+          %th{scope: "col"}
+            - if params[:locale] == 'en'
+              = Song.human_attribute_name(:title_english)
+            - else
+              = Song.human_attribute_name(:title)
+          %th{scope: "col"}
+            = Song.human_attribute_name(:genre)
+          %th{scope: "col"}
+            = Song.human_attribute_enum_value(:diff_type, :normal)
+          %th{scope: "col"}
+            = Song.human_attribute_enum_value(:diff_type, :hard)
+          %th{scope: "col"}
+            = Song.human_attribute_enum_value(:diff_type, :expert)
+          %th{scope: "col"}
+            = Song.human_attribute_enum_value(:diff_type, :inferno)
       %tbody
         - @songs.each do |song|
           %tr{class: ('bg-secondary' unless song.can_play_offline )}
-            %th{scope: 'row'} #{song.title}
+            %th{scope: 'row'}
+              - if params[:locale] == 'en' && song.title_english.present?
+                = song.title_english
+              - else
+                = song.title
             %td #{Song.human_attribute_enum_value(:genre, song.genre)}
             %td #{@normal_diff.find{|s| s[:music_id] == song.music_id}.nil? ? '' : @normal_diff.find{|s| s[:music_id] == song.music_id}[:diff]}
             %td #{@hard_diff.find{|s| s[:music_id] == song.music_id}.nil? ? '' : @hard_diff.find{|s| s[:music_id] == song.music_id}[:diff]}

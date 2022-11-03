@@ -1,12 +1,5 @@
 en:
   views:
     user_songs:
-      song_difficulty_gteq: Difficulty
-      song_diff_type_eq: Diff Type
-      song_title_cont: Title
-      song_genre_eq: Genre
-      user_scores_achieve_eq: Achieve
-      is_favorite_true: Favorite Only
-      song_can_play_offline_true: Offline Songs Only
       unselect: Unselect
       or_more: or more
