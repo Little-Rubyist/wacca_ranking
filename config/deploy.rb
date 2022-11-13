@@ -29,15 +29,16 @@ namespace :ridgepole do
   end
 end
 
-before 'deploy:assets:precompile', 'i18n:js:export'
-namespace :i18n do
-  namespace :js do
-    desc 'export i18n-js'
-    task :export do
-      invoke 'i18n:js:export'
-    end
-  end
-end
+# TODO: できればExportをしたい．出来るようになったらjavascript/i18-js/translation.jsはGitignoreする
+# before 'deploy:assets:precompile', 'i18n:js:export'
+# namespace :i18n do
+#   namespace :js do
+#     desc 'export i18n-js'
+#     task :export do
+#       invoke 'i18n:js:export'
+#     end
+#   end
+# end
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh

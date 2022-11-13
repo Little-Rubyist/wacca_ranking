@@ -1,5 +1,6 @@
 .container
-  %h1 アカウント登録
+  %h1
+    = t('views.users.new')
   = form_with model: @user, url: sign_up_url do |f|
     = render 'shared/error_messages', object: f.object
     .row.mb-2
@@ -22,12 +23,7 @@
       .col-9
         = f.password_field :password_confirmation, class: 'form-control', required: true
 
-    .row.text-center.text-muted
-      %p
-        登録した時点で
-        = link_to '利用規約', agreement_path, target: '_blank'
-        と
-        = link_to 'プライバシーポリシー', policies_path, target: '_blank'
-        に同意したものとみなします。
+    = render 'register_info'
+
     .d-grid.gap-2.d-block.justify-content-end.m-3
-      = f.submit "登録する", class: "btn btn-primary mx-1"
+      = f.submit t('views.common.register_button'), class: "btn btn-primary mx-1"

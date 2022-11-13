@@ -1,0 +1,7 @@
+en:
+  views:
+    users:
+      new: Register Account
+    session:
+      new: Login
+      login_button: Login

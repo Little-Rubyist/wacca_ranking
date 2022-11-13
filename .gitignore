@@ -36,3 +36,5 @@
 
 /config/credentials/production.key
 /config/database.yml
+#/app/javascript/i18n-js/*
+#!/app/javascript/i18n-js/.keep

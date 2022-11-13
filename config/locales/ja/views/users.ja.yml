@@ -1,0 +1,7 @@
+ja:
+  views:
+    users:
+      new: アカウント登録
+    session:
+      new: ログイン
+      login_button: ログイン

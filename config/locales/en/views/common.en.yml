@@ -4,6 +4,7 @@ en:
       search: Search
       search_button: Search
       reset_button: Reset
+      register_button: Register
     header:
       register: Register
       login: Login

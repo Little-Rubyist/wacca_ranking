@@ -4,6 +4,7 @@ ja:
       search: 検索
       search_button: 検索
       reset_button: リセット
+      register_button: 登録
     header:
       register: 登録
       login: ログイン
