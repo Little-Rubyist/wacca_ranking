@@ -18,8 +18,8 @@
             = f.label :song_diff_type_eq, t('views.search.song_diff_type_eq'), class: 'form-label'
             = f.select :song_diff_type_eq, Song.diff_types.map { |k, v| [Song.human_attribute_enum_value(:diff_type, k), v] }.to_h, {include_blank: true},  {class: 'form-select'}
           .col-lg-4.col-md-4
-            = f.label :song_title_cont, t('views.search.song_title_cont'), class: 'form-label'
-            = f.search_field :song_title_cont, class: 'form-control'
+            = f.label :song_title_or_song_title_english_cont, t('views.search.song_title_cont'), class: 'form-label'
+            = f.search_field :song_title_or_song_title_english_cont, class: 'form-control'
         .row
           .col-lg-4.col-md-4
             = f.label :song_genre_eq, t('views.search.song_genre_eq'), class: 'form-label'

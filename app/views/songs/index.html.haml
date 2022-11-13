@@ -24,8 +24,8 @@
             = f.label :genre_eq, I18n.t('views.search.song_genre_eq'), class: 'form-label'
             = f.select :genre_eq, Song.genres.map { |k, v| [Song.human_attribute_enum_value(:genre, k), v]}.to_h, {include_blank: true}, {class: 'form-select'}
           .col-lg-3.col-md-4
-            = f.label :title_cont, I18n.t('views.search.song_title_cont'), class: 'form-label'
-            = f.search_field :title_cont, class: 'form-control'
+            = f.label :title_or_title_english_cont, I18n.t('views.search.song_title_cont'), class: 'form-label'
+            = f.search_field :title_or_title_english_cont, class: 'form-control'
           .col-lg-3.col-md-6
             .row
               .col
