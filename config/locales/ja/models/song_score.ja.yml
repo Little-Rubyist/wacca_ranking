@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    attributes:
+      user_score:
+        score: スコア
+        achieve: FC状態
+      user_score/achieve:
+        clear: Clear
+        missless: Missless
+        full_combo: Full Combo
+        all_marvelous: All Marvelous

@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/fnando/i18n-js.git
+  revision: 4b07b30e8b6f42c4415f4bb967e8e2986a0e2268
+  branch: v3
+  specs:
+    i18n-js (3.9.2)
+      i18n (>= 0.6.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -336,6 +344,7 @@ DEPENDENCIES
   capybara
   debug
   haml-rails
+  i18n-js!
   importmap-rails
   jbuilder
   mechanize

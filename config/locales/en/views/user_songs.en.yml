@@ -1,0 +1,5 @@
+en:
+  views:
+    user_songs:
+      unselect: Unselect
+      or_more: or more

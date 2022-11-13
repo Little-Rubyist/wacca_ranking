@@ -1,0 +1,15 @@
+.container
+  %h1 Announcement
+  %p
+    You can search by category, date or content
+    %br
+    category: Feature, Important, Fix
+  .table-responsive
+    %table.table.align-middle{'data-toggle': 'table', 'data-search': 'true', 'data-pagination': 'true', 'data-page-list': [5, 10, 15, 20], 'data-page-size': 5}
+      %thead
+        %th{scope: 'col'} Date
+        %th{scope: 'col'} Category
+        %th{scope: 'col'} Content
+      %tbody
+        - info_files.each do |file|
+          = render "home/information/#{file}"

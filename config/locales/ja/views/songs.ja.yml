@@ -1,0 +1,7 @@
+ja:
+  views:
+    songs:
+      title: 楽曲一覧
+      unselect: 未選択
+      or_more: 以上
+      hint: ヒント：難易度とレベルを同時に検索することで「Expert Lv13以上」のような検索ができます

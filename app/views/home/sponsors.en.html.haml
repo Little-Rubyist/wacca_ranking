@@ -1,0 +1,57 @@
+.container
+  %h1 About donation and sponsors
+  %p
+    the server costs are incurred in the operation of OFFCCA.
+    We would be very grateful if you could make a donation to help us provide a stable service in the future.
+    %br
+    We will report the total amount received and the purpose of the donation (month in which it is received only) on a monthly basis.
+  %p If you want to send me 100% of the amount, we recommend you to use the one-off service instead of the fixed-amount service. (because of the service fee).
+
+  %h2 For those who are willing to pay a fixed monthly fee for support
+  %p We offer a monthly support service called "fantia".
+  %p If you can't afford it, but would like to support us, please join the free plan of fantia.
+  .row
+    = link_to 'https://fantia.jp/little_rubyist', 'https://fantia.jp/little_rubyist', class: 'text-center'
+  = link_to image_tag('fantia_qrcode.png', class: "img-fluid rounded mx-auto d-block"), 'https://fantia.jp/little_rubyist', target: '_blank'
+  %p
+    If you have a Github account, you can also use the Github sponsor.
+    %br
+    The amount of money and benefits are almost the same.
+  %p
+    = link_to 'https://github.com/sponsors/Little-Rubyist', 'https://github.com/sponsors/Little-Rubyist', target: '_blank'
+
+  %h2 For those who are willing to provide support on a one-time basis
+  %p We have several options available, so please choose the one you are most comfortable with.
+  %h3 paypay
+  .row
+    = link_to 'https://qr.paypay.ne.jp/qeNJFJfx8cw6xAUz', 'https://qr.paypay.ne.jp/qeNJFJfx8cw6xAUz', target: '_blank'
+  = link_to image_tag('paypay_qrcode.jpg', class: 'img-fluid rounded mx-auto d-block'), 'https://qr.paypay.ne.jp/qeNJFJfx8cw6xAUz', target: '_blank'
+  %h3 paypal
+  %p
+    = link_to 'https://www.paypal.com/paypalme/LittleRubyist', 'https://www.paypal.com/paypalme/LittleRubyist', target: '_blank'
+  %h3 Other indirect donations
+  %p
+    We accept donations in kind or in-kind. Of course, if you wish, you can include your name or logo in the list of sponsors below.
+    %br
+    If you would like your name or logo to be included in the list of sponsors, please include your contact information (Twitter, etc.) in the message when you send your gift.
+  %p
+    = link_to 'Amazon wishlist', 'https://www.amazon.jp/hz/wishlist/ls/2ZVR74FUWMXDC?ref_=wl_share', target: '_blank'
+  %p
+    If you want to gift via Steam, please make a friend request before gifting.
+    %br
+    = link_to 'Steam wishlist', 'https://store.steampowered.com/wishlist/id/Little_Rubyist/#sort=order', target: '_blank'
+
+  %h1 Sponsors
+
+  .card.m-3
+    .card-title.m-1
+      %h2 Monthly sponsors
+  .card.m-3
+    .card-title.m-1
+      %h2 One-time sponsors
+    .card-body
+      %ul.list-group.list-group-horizontal
+        %li.list-group-item
+          = link_to '__yumechi', 'https://twitter.com/__yumechi', target: '_blank'
+        %li.list-group-item
+          = link_to 'rhiroe', 'https://twitter.com/buta_botti', target: '_blank'

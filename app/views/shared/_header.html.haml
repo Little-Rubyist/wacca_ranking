@@ -7,32 +7,40 @@
       %ul.navbar-nav.me-auto.mb-2.mb-lg-0
         - unless logged_in?
           %li.nav-item
-            %a.nav-link.active{href: sign_up_path} 登録
+            %a.nav-link.active{href: sign_up_path} #{I18n.t('views.header.register')}
           %li.nav-item
-            %a.nav-link.active{href: sign_in_path} ログイン
+            %a.nav-link.active{href: sign_in_path} #{I18n.t('views.header.login')}
         - if logged_in?
           %li.nav-item
-            %a.nav-link.active{href: user_songs_path} ホーム
+            %a.nav-link.active{href: user_songs_path} #{I18n.t('views.header.home')}
         %li.nav-item
-          %a.nav-link.active{href: songs_path} 楽曲一覧
+          %a.nav-link.active{href: songs_path} #{I18n.t('views.header.songs')}
         %li.nav-item.dropdown
           %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
-            その他
+            = I18n.t('views.header.other')
           %ul.dropdown-menu
             %li
-              %a.dropdown-item{:href => information_path} お知らせ
+              %a.dropdown-item{:href => information_path} #{I18n.t('views.header.information')}
             %li
-              %a.dropdown-item{:href => sponsors_path} お布施
+              %a.dropdown-item{:href => sponsors_path} #{I18n.t('views.header.donation')}
             %li
               %hr.dropdown-divider/
             %li
-              %a.dropdown-item{:href => agreement_path} 利用規約
+              %a.dropdown-item{:href => agreement_path} #{I18n.t('views.header.agreement')}
             %li
-              %a.dropdown-item{:href => policies_path} 個人情報保護方針
-      - if logged_in?
-        .d-flex
-          %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+              %a.dropdown-item{:href => policies_path} #{I18n.t('views.header.policy')}
+      .d-flex
+        %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+          %li.nav-item.dropdown
+            %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
+              language
+            %ul.dropdown-menu
+              %li
+                %a.dropdown-item{:href => "#{request.path_info}?locale=ja"} 日本語
+              %li
+                %a.dropdown-item{:href => "#{request.path_info}?locale=en"} English
+          - if logged_in?
             %li.nav-item
-              = link_to 'ログアウト', sign_out_path, {method: :post, class: 'nav-link active'}
+              = link_to I18n.t('views.header.logout'), sign_out_path, {method: :post, class: 'nav-link active'}
             %li.nav-item
-              %a.nav-link.active{href: settings_users_path} 設定
+              %a.nav-link.active{href: settings_users_path} #{I18n.t('views.header.setting')}

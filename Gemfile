@@ -77,6 +77,7 @@ gem 'mini_racer'
 gem 'ransack'
 gem 'pagy'
 gem 'rails-i18n'
+gem 'i18n-js', git: 'https://github.com/fnando/i18n-js.git', branch: 'v3'
 
 # for deploy
 group :development do

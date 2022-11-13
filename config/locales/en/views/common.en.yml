@@ -1,0 +1,27 @@
+en:
+  views:
+    common:
+      search: Search
+      search_button: Search
+      reset_button: Reset
+      register_button: Register
+    header:
+      register: Register
+      login: Login
+      logout: Logout
+      home: Home
+      songs: Songs
+      information: Announcement
+      donation: Donation
+      agreement: Agreement(Japanese)
+      policy: Policies(Japanese)
+      setting: Setting
+      other: Other
+    search:
+      song_difficulty_gteq: Difficulty
+      song_diff_type_eq: Diff Type
+      song_title_cont: Title
+      song_genre_eq: Genre
+      user_scores_achieve_eq: Achieve
+      user_song_is_favorite_true: Favorite Only
+      song_can_play_offline_true: Offline Songs Only

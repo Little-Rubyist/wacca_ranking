@@ -1,0 +1,27 @@
+ja:
+  views:
+    common:
+      search: 検索
+      search_button: 検索
+      reset_button: リセット
+      register_button: 登録
+    header:
+      register: 登録
+      login: ログイン
+      logout: ログアウト
+      home: ホーム
+      songs: 楽曲一覧
+      information: お知らせ
+      donation: お布施
+      agreement: 利用規約
+      policy: 個人情報保護方針
+      setting: 設定
+      other: その他
+    search:
+      song_difficulty_gteq: 譜面定数
+      song_diff_type_eq: 難易度
+      song_title_cont: タイトル
+      song_genre_eq: ジャンル
+      user_scores_achieve_eq: FC状況
+      user_song_is_favorite_true: お気に入りのみ
+      song_can_play_offline_true: オフライン曲のみ

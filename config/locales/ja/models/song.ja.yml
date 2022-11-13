@@ -1,0 +1,25 @@
+ja:
+  activerecord:
+    attributes:
+      song:
+        title: タイトル
+        title_english: 英語版タイトル
+        ruby: ルビ
+        music_id: 楽曲ID
+        can_play_offline: オフラインプレイ可
+        genre: ジャンル
+        diff_type: 難易度
+        difficulty: 譜面定数
+      song/diff_type:
+        normal: Normal
+        hard: Hard
+        expert: Expert
+        inferno: Inferno
+      song/genre:
+        anime_pop: アニメ/POP
+        vocaloid: ボカロ
+        touhou: 東方アレンジ
+        '2_5_dimension': 2.5次元
+        variety: バラエティ
+        original: オリジナル
+        tanoc: HARDCORE TANO*C

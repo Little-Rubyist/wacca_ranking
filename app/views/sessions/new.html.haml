@@ -1,13 +1,14 @@
 .container
-  %h1 ログイン
+  %h1
+    = t('views.session.new')
   = form_for(:session, url: sign_in_path) do |f|
     .row.justify-content-center.mb-2
-      = f.label :name, 'ID', class: 'form-label col-3'
+      = f.label :name, User.human_attribute_name(:name), class: 'form-label col-3'
       .col-9
         = f.text_field :name, class: 'form-control'
     .row.justify-content-center.mb-2
-      = f.label :password, 'パスワード', class: 'form-label col-3'
+      = f.label :password, User.human_attribute_name(:password), class: 'form-label col-3'
       .col-9
         = f.password_field :password, class: 'form-control'
     .d-grid.gap-2.d-block.justify-content-end.m-3
-      = f.submit "ログイン", class: 'btn btn-primary'
+      = f.submit t('views.session.login_button'), class: 'btn btn-primary'
