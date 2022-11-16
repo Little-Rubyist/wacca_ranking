@@ -42,6 +42,7 @@
     %table.table
       %thead
         %tr
+          %th{scope: "col", style: 'min-width: 80px;'}
           %th{scope: "col"}
             - if params[:locale] == 'en'
               = Song.human_attribute_name(:title_english)
@@ -60,6 +61,8 @@
       %tbody
         - @songs.each do |song|
           %tr
+            %td{style: 'width: 10%;'}
+              = image_tag "master/songs/#{song.song.music_id}.png", class: 'img-fluid'
             %th{scope: 'row'}
               - if params[:locale] == 'en' && song.song.title_english.present?
                 = link_to song.song.title_english, user_song_path(song.id), class: 'text-black'
