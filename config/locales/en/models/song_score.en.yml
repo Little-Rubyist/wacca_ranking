@@ -4,6 +4,7 @@ en:
       user_score:
         score: Score
         achieve: Achieve
+        played_on: Played on
       user_score/achieve:
         clear: Clear
         missless: Missless

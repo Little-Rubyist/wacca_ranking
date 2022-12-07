@@ -10,7 +10,7 @@ set :ridgepole_env, fetch(:rails_env)
 set :nginx_config_name, "#{fetch(:application)}.conf"
 set :nginx_sites_enabled_path, "/etc/nginx/conf.d"
 
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "app/assets/images/master"
 append :linked_files, "config/database.yml"
 
 namespace :deploy do
