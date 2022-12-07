@@ -1,4 +1,4 @@
-FROM ruby:3.1
+FROM ruby:3.1.2
 
 ENV APP_ROOT /app
 # シェルスクリプトとしてbashを利用
