@@ -8,11 +8,15 @@
         = button_to 'お気に入りする', { controller: 'user_songs', action: 'toggle_favorite' }, method: :put, params: {id: @user_song.id}, class: 'btn btn-primary'
     .col-auto
       = button_to '追加', new_user_score_path, method: :get, params: {user_song_id: @user_song.id}, class: 'btn btn-primary'
-  %ul.list-group
-    %li.list-group-item タイトル：#{@song.title}
-    %li.list-group-item ジャンル：#{Song.human_attribute_enum_value(:genre, @song.genre)}
-    %li.list-group-item レベル：#{Song.human_attribute_enum_value(:diff_type, @song.diff_type)}
-    %li.list-group-item 難易度：#{@song.difficulty}
+  .row
+    .col-lg-4
+      = image_tag "master/songs/#{@song.music_id}.png"
+    .col
+      %ul.list-group
+        %li.list-group-item タイトル：#{@song.title}
+        %li.list-group-item ジャンル：#{Song.human_attribute_enum_value(:genre, @song.genre)}
+        %li.list-group-item レベル：#{Song.human_attribute_enum_value(:diff_type, @song.diff_type)}
+        %li.list-group-item 難易度：#{@song.difficulty}
 
   %h3 スコア履歴
 

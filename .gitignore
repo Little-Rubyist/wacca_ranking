@@ -36,5 +36,7 @@
 
 /config/credentials/production.key
 /config/database.yml
+/app/assets/images/master
+!/app/assets/images/master/.keep
 #/app/javascript/i18n-js/*
 #!/app/javascript/i18n-js/.keep
