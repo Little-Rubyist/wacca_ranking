@@ -17,5 +17,9 @@
       = f.label :achieve, class: 'form-label col-3'
       .col-9
         = f.select :achieve, UserScore.achieves.map { |k, _| [UserScore.human_attribute_enum_value(:achieve, k), k] }.to_h, {include_blank: true}, {class: 'form-select'}
+    .row.mb-2
+      = f.label :played_on, class: 'form-label col-3'
+      .col-9
+        = f.date_field :played_on, value: Date.today, class: 'form-control'
     .d-grid.gap-2.d-block.justify-content-end.m-3
       = f.submit "追加する", class: "btn btn-primary mx-1"

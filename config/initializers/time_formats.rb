@@ -1,0 +1,6 @@
+Date::DATE_FORMATS[:japanese] = "%Y年%m月%d日"
+Time::DATE_FORMATS[:japanese] = "%Y年%m月%d日%H時%M分%S秒"
+Date::DATE_FORMATS[:japanese_without_day] = "%Y年%m月"
+Time::DATE_FORMATS[:japanese_without_day] = "%Y年%m月"
+Date::DATE_FORMATS[:date_with_slash] = "%Y/%m/%d"
+Time::DATE_FORMATS[:date_with_slash] = "%Y/%m/%d %H:%M"

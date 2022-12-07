@@ -3,6 +3,7 @@ create_table "user_scores", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHA
   t.integer :user_song_id
   t.integer :score
   t.integer :achieve
+  t.datetime :played_on
   t.datetime "updated_at", precision: 6, null: false
   t.datetime "created_at", precision: 6, null: false
 

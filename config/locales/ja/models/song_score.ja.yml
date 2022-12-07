@@ -4,6 +4,7 @@ ja:
       user_score:
         score: スコア
         achieve: FC状態
+        played_on: プレイ日
       user_score/achieve:
         clear: Clear
         missless: Missless

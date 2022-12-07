@@ -36,9 +36,9 @@
               language
             %ul.dropdown-menu
               %li
-                %a.dropdown-item{:href => "#{request.path_info}?locale=ja"} 日本語
+                %a.dropdown-item{:href => locale_path('ja')} 日本語
               %li
-                %a.dropdown-item{:href => "#{request.path_info}?locale=en"} English
+                %a.dropdown-item{:href => locale_path('en')} English
           - if logged_in?
             %li.nav-item
               = link_to I18n.t('views.header.logout'), sign_out_path, {method: :post, class: 'nav-link active'}

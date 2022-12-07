@@ -35,6 +35,7 @@ class UserScoresController < ApplicationController
     def user_score_params
       params.require(:user_score).permit(:user_song_id,
                                          :score,
+                                         :played_on,
                                          :achieve)
     end
 end
