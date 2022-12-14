@@ -28,5 +28,9 @@ module Myapp
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     config.middleware.use I18n::JS::Middleware
     config.time_zone = 'Tokyo'
+
+    # use rspec
+    config.generators.test_framework :rspec
+    config.generators.integration_tool :rspec
   end
 end
