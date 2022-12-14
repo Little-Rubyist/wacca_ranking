@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :user do
-    name { "user_#{User.next_id}" }
-    display_name { "user_#{User.next_id}_name" }
+    sequence(:name, 'user_1')
+    sequence(:display_name, 'username_1')
     password { 'password' }
   end
 end
