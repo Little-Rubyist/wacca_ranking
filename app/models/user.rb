@@ -4,5 +4,6 @@ class User < ActiveRecord::Base
   has_secure_password validations: true
   before_save { name.downcase! }
 
-  validates :name, presence: true, uniqueness: true
+  VALID_NAME_REGEX = /\A[0-9a-zA-Z-_]*\z/
+  validates :name, presence: true, uniqueness: true, format: { with: VALID_NAME_REGEX }
 end
