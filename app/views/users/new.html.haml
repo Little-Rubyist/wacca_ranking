@@ -7,6 +7,7 @@
       = f.label :name, class: 'form-label col-3'
       .col-9
         = f.text_field :name, class: 'form-control', required: true
+        .small.text-secondary 英数字と-_のみ入力出来ます(大文字と小文字は区別しません)
 
     .row.mb-2
       = f.label :display_name, class: 'form-label col-3'
