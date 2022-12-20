@@ -1,0 +1,2 @@
+class CustomTitle < ApplicationRecord
+end

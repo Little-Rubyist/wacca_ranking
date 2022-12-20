@@ -1,0 +1,10 @@
+# encoding: utf-8
+create_table "titles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.string :name
+  t.bigint :custom1
+  t.bigint :custom2
+  t.bigint :custom3
+  t.integer :rarity
+  t.datetime "updated_at", precision: 6, null: false
+  t.datetime "created_at", precision: 6, null: false
+end
