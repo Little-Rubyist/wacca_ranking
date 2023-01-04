@@ -17,6 +17,16 @@
           %a.nav-link.active{href: songs_path} #{I18n.t('views.header.songs')}
         %li.nav-item.dropdown
           %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
+            #{I18n.t('views.header.gallery')}
+          %ul.dropdown-menu
+            %li
+              %a.dropdown-item{:href => gallery_icons_path} #{I18n.t('views.header.icons')}
+            %li
+              %a.dropdown-item{:href => gallery_plates_path} #{I18n.t('views.header.plates')}
+            %li
+              %a.dropdown-item{:href => gallery_songs_path} #{I18n.t('views.header.jackets')}
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
             = I18n.t('views.header.other')
           %ul.dropdown-menu
             %li

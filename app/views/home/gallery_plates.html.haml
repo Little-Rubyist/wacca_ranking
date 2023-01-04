@@ -1,0 +1,3 @@
+.container
+  - Plate.all.each do |plate|
+    = image_tag "master/plate/#{plate.id}.png", 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'top', 'data-bs-custom-css': 'custom-tooltip', 'data-bs-title': plate.name, style: 'width: 20vw; min-width: 400px;'

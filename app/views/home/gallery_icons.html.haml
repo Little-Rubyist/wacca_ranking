@@ -1,0 +1,4 @@
+.container
+  - Icon.all.each do |icon|
+    = image_tag "master/icon/#{icon.id}.png", 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'top', 'data-bs-custom-css': 'custom-tooltip', 'data-bs-title': icon.name, style: 'width: 10vw; min-width: 160px;'
+

@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to user_songs_path
     else
+      flash.now[:danger] = "IDまたはパスワードが間違っています"
       render 'new'
     end
   end

@@ -17,6 +17,10 @@ en:
       policy: Policies(Japanese)
       setting: Setting
       other: Other
+      gallery: Gallery
+      icons: Icon
+      plates: Plate
+      jackets: Song Jackets
     search:
       song_difficulty_gteq: Difficulty
       song_diff_type_eq: Diff Type
