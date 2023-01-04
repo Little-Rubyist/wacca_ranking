@@ -17,6 +17,10 @@ ja:
       policy: 個人情報保護方針
       setting: 設定
       other: その他
+      gallery: ギャラリー
+      icons: アイコン
+      plates: プレート
+      jackets: 楽曲ジャケット
     search:
       song_difficulty_gteq: 譜面定数
       song_diff_type_eq: 難易度

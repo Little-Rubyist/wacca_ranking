@@ -1,0 +1,2 @@
+class Plate < ApplicationRecord
+end

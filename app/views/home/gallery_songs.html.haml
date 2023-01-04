@@ -1,0 +1,3 @@
+.container
+  - @songs.each do |song|
+    = image_tag "master/songs/#{song.music_id}.png", 'data-bs-toggle': 'tooltip', 'data-bs-placement': 'top', 'data-bs-custom-css': 'custom-tooltip', 'data-bs-title': song.title, style: 'width: 10vw; min-width: 160px;'

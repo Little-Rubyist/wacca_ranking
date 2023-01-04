@@ -26,4 +26,7 @@ Rails.application.routes.draw do
   get 'agreement' => 'home#agreement'
   get 'information' => 'home#information'
   get 'sponsors' => 'home#sponsors'
+  get 'gallery/songs' => 'home#gallery_songs'
+  get 'gallery/icons' => 'home#gallery_icons'
+  get 'gallery/plates' => 'home#gallery_plates'
 end

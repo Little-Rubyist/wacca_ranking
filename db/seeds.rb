@@ -8,7 +8,57 @@
 
 require "csv"
 
+# master data
+console_colors = []
+custom_titles = []
+icons = []
+navigators = []
+plates = []
 songs = []
+titles = []
+
+CSV.foreach('db/csvs/console_colors.csv', headers: true) do |row|
+  console_colors << {id: row['id'],
+                    name: row['name']}
+end
+ConsoleColor.insert_all(console_colors)
+
+CSV.foreach('db/csvs/custom_titles.csv', headers: true) do |row|
+  custom_titles << {id: row['id'],
+                   name: row['part']}
+end
+CustomTitle.insert_all(custom_titles)
+
+CSV.foreach('db/csvs/icons.csv', headers: true) do |row|
+  icons << {id: row['id'],
+            name: row['name'],
+            rarity: row['rarity']}
+end
+Icon.insert_all(icons)
+
+CSV.foreach('db/csvs/navigators.csv', headers: true) do |row|
+  navigators << {id: row['id'],
+                    name: row['name']}
+end
+Navigator.insert_all(navigators)
+
+CSV.foreach('db/csvs/plates.csv', headers: true) do |row|
+  plates << {id: row['id'],
+             name: row['name'],
+             rarity: row['rarity']}
+end
+Plate.insert_all(plates)
+
+CSV.foreach('db/csvs/titles.csv', headers: true) do |row|
+  titles << {id: row['id'],
+             custom1: row['custom1'],
+             custom2: row['custom2'],
+             custom3: row['custom3'],
+             name: row['title'],
+             rarity: row['rarity']}
+end
+Title.insert_all(titles)
+
 CSV.foreach('db/csvs/songs.csv', headers: true) do |row|
   songs << {title: row['title'],
             title_english: row['title_english'],
@@ -20,3 +70,4 @@ CSV.foreach('db/csvs/songs.csv', headers: true) do |row|
             difficulty: row['difficulty'] }
 end
 Song.insert_all(songs)
+

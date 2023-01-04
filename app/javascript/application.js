@@ -10,6 +10,8 @@ window.$ = jquery
 window.jQuery = jquery
 
 $(function() {
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
   const query = new URLSearchParams(location.search)
   I18n.defaultLocale = 'ja'
   I18n.locale = query.get('locale')

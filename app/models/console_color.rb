@@ -1,0 +1,2 @@
+class ConsoleColor < ApplicationRecord
+end
