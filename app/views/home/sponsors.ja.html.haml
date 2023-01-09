@@ -22,9 +22,10 @@
   %h2 単発でサポートをして頂ける方
   %p いくつか用意したので使いやすいものを選んで頂けると嬉しいです．
   %h3 paypay
+  %small ※2023/01/23 13:55まで有効なコードです
   .row
-    = link_to 'https://qr.paypay.ne.jp/qeNJFJfx8cw6xAUz', 'https://qr.paypay.ne.jp/qeNJFJfx8cw6xAUz', target: '_blank'
-  = link_to image_tag('paypay_qrcode.jpg', class: 'img-fluid rounded mx-auto d-block'), 'https://qr.paypay.ne.jp/qeNJFJfx8cw6xAUz', target: '_blank'
+    = link_to paypay_url, paypay_url, target: '_blank'
+  = link_to image_tag('paypay_qrcode.jpg', class: 'img-fluid rounded mx-auto d-block'), paypay_url, target: '_blank'
   %h3 paypal
   %p
     = link_to 'https://www.paypal.com/paypalme/LittleRubyist', 'https://www.paypal.com/paypalme/LittleRubyist', target: '_blank'

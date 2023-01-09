@@ -11,7 +11,7 @@ set :nginx_config_name, "#{fetch(:application)}.conf"
 set :nginx_sites_enabled_path, "/etc/nginx/conf.d"
 
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "app/assets/images/master"
-append :linked_files, "config/database.yml"
+append :linked_files, "config/database.yml", "db/csvs/console_colors.csv", "db/csvs/custom_titles.csv", "db/csvs/icons.csv", "db/csvs/navigators.csv", "db/csvs/plates.csv", "db/csvs/songs.csv", "db/csvs/titles.csv"
 
 namespace :deploy do
   desc "No ActiveRecord override"

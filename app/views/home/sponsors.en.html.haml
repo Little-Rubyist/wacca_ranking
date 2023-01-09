@@ -23,9 +23,10 @@
   %h2 For those who are willing to provide support on a one-time basis
   %p We have several options available, so please choose the one you are most comfortable with.
   %h3 paypay
+  %small ※Expiration: 2023/01/23 13:55 JST
   .row
-    = link_to 'https://qr.paypay.ne.jp/qeNJFJfx8cw6xAUz', 'https://qr.paypay.ne.jp/qeNJFJfx8cw6xAUz', target: '_blank'
-  = link_to image_tag('paypay_qrcode.jpg', class: 'img-fluid rounded mx-auto d-block'), 'https://qr.paypay.ne.jp/qeNJFJfx8cw6xAUz', target: '_blank'
+    = link_to paypay_url, paypay_url, target: '_blank'
+  = link_to image_tag('paypay_qrcode.jpg', class: 'img-fluid rounded mx-auto d-block'), paypay_url, target: '_blank'
   %h3 paypal
   %p
     = link_to 'https://www.paypal.com/paypalme/LittleRubyist', 'https://www.paypal.com/paypalme/LittleRubyist', target: '_blank'
