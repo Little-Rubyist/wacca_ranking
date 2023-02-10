@@ -3,6 +3,7 @@ create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=u
   t.string :name
   t.string :display_name
   t.string :password_digest
+  t.text :trophy
   t.datetime "updated_at", precision: 6, null: false
   t.datetime "created_at", precision: 6, null: false
 

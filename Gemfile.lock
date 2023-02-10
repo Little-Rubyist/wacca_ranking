@@ -128,6 +128,8 @@ GEM
     digest (3.1.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    enumerize (2.5.0)
+      activesupport (>= 3.2)
     erubi (1.10.0)
     erubis (2.7.0)
     execjs (2.8.1)
@@ -366,6 +368,7 @@ DEPENDENCIES
   capistrano3-puma
   capybara
   debug
+  enumerize
   factory_bot_rails
   haml-rails
   i18n-js!

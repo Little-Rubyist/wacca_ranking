@@ -80,6 +80,7 @@ gem 'ransack'
 gem 'pagy'
 gem 'rails-i18n'
 gem 'i18n-js', git: 'https://github.com/fnando/i18n-js.git', branch: 'v3'
+gem 'enumerize'
 
 # for deploy
 group :development do
