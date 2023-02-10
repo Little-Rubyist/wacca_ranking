@@ -3,6 +3,7 @@ create_table "user_songs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHAR
   t.integer :user_id
   t.integer :song_id
   t.boolean :is_favorite
+  t.integer :offline_count
   t.datetime "updated_at", precision: 6, null: false
   t.datetime "created_at", precision: 6, null: false
 
