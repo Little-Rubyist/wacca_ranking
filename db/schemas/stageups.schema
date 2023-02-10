@@ -1,0 +1,9 @@
+# encoding: utf-8
+create_table "stageups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.string :title
+  t.integer :first_song_id
+  t.integer :second_song_id
+  t.integer :last_song_id
+  t.datetime "updated_at", precision: 6, null: false
+  t.datetime "created_at", precision: 6, null: false
+end

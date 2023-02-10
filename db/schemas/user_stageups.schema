@@ -1,0 +1,10 @@
+# encoding: utf-8
+create_table "user_stageups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  t.integer :user_id
+  t.integer :stageup_id
+  t.integer :first_score
+  t.integer :second_score
+  t.integer :last_score
+  t.datetime "updated_at", precision: 6, null: false
+  t.datetime "created_at", precision: 6, null: false
+end

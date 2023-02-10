@@ -16,6 +16,7 @@ navigators = []
 plates = []
 songs = []
 titles = []
+stageups = []
 
 CSV.foreach('db/csvs/console_colors.csv', headers: true) do |row|
   console_colors << {id: row['id'],
@@ -60,7 +61,8 @@ end
 Title.insert_all(titles)
 
 CSV.foreach('db/csvs/songs.csv', headers: true) do |row|
-  songs << {title: row['title'],
+  songs << {id: row['id'],
+            title: row['title'],
             title_english: row['title_english'],
             ruby: row['ruby'],
             music_id: row['music_id'],
@@ -70,4 +72,13 @@ CSV.foreach('db/csvs/songs.csv', headers: true) do |row|
             difficulty: row['difficulty'] }
 end
 Song.insert_all(songs)
+
+CSV.foreach('db/csvs/stageups.csv', headers: true) do |row|
+  stageups << {id: row['id'],
+               title: row['title'],
+               first_song_id: row['first'],
+               second_song_id: row['second'],
+               last_song_id: row['last']}
+end
+Stageup.insert_all(stageups)
 
