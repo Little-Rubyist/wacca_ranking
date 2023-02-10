@@ -4,6 +4,31 @@ class ImportFromJson
     @json = JSON.parse(File.read(file))['player']
   end
 
+  def import_stageup_score
+    stageup_scores = []
+    @json['stages'].each do |stage|
+      next if stage['songs'].reject{|x| x['score'].zero?}.blank?
+
+      stageup = Stageup.find(stage['id'])
+      songs = {first: stageup.first_song.music_id,
+               second: stageup.second_song.music_id,
+               last: stageup.last_song.music_id}
+      stageup_score = { user_id: 1,
+                        stageup_id: stageup.id,
+                        first_score: nil,
+                        second_score: nil,
+                        last_score: nil}
+      stage['songs'].each do |song|
+        next if song['id'].zero?
+
+        score = songs.find{|_, v| v == song['id']}
+        stageup_score["#{score[0]}_score".to_sym] = song['score']
+      end
+      stageup_scores << stageup_score
+    end
+    UserStageup.insert_all(stageup_scores)
+  end
+
   def import_favorites
     update_ids = []
     @json['favorites'].each do |id|
