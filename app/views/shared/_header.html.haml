@@ -12,7 +12,8 @@
             %a.nav-link.active{href: sign_in_path} #{I18n.t('views.header.login')}
         - if logged_in?
           %li.nav-item
-            %a.nav-link.active{href: user_songs_path} #{I18n.t('views.header.home')}
+            -#%a.nav-link.active{href: user_songs_path} #{I18n.t('views.header.home')}
+            %a.nav-link.active{href: user_path(current_user)} マイページ
         %li.nav-item
           %a.nav-link.active{href: songs_path} #{I18n.t('views.header.songs')}
         %li.nav-item.dropdown

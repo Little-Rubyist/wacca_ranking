@@ -48,6 +48,6 @@
             %td #{song.song.difficulty}
             %td #{Song.human_attribute_enum_value(:diff_type, song.song.diff_type)}
             %td #{show_score(song)}
-            %td #{show_archive_text(song)}
+            %td #{index_archive_text(song)}
   .d-flex.justify-content-center.mb-2
     = pagy_bootstrap_nav(@pagy).html_safe
