@@ -26,6 +26,16 @@ Things you may want to cover:
 
   `rails ridgepole:apply`
 
+* credentials
+
+  memo: add credentials key
+  
+  `bundle exec rails credentials:edit RAILS_ENV=env`
+
+* deployment
+
+  `bundle exec cap production deploy`
+
 * How to run the test suite
 
   sorry, I don't write tests :(
