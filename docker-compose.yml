@@ -6,7 +6,7 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: root
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - ./tmp/db:/var/lib/mysql
 
@@ -32,4 +32,4 @@ services:
 
 secrets:
   host_ssh_key:
-    file: C:\Users\lily_\.ssh\main-windows.pem
+    file: id_rsa

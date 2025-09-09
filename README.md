@@ -15,7 +15,7 @@ Things you may want to cover:
 
 * Database creation
 
-1. `cp template/database.yml config/database.yml`
+1. `cp templates/database.yml config/database.yml`
 2. `rails db:create`
 
 * Database initialization
