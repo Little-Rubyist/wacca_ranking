@@ -166,6 +166,8 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     libv8-node (16.10.0.0-aarch64-linux)
     libv8-node (16.10.0.0-x86_64-linux)
     loofah (2.18.0)
@@ -375,6 +377,7 @@ DEPENDENCIES
   i18n-js!
   importmap-rails
   jbuilder
+  launchy
   mechanize
   mini_racer
   mysql2 (~> 0.5)

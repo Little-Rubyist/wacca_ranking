@@ -15,7 +15,7 @@ services:
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     environment:
       - EDITOR=vim
-#      - SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub
+      - SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub
     volumes:
       - .:/app
     ports:
@@ -25,10 +25,10 @@ services:
     secrets:
       - host_ssh_key
 
-#  selenium_chrome:
-#    image: selenium/standalone-chrome-debug
-#    logging:
-#      driver: none
+  selenium_chrome:
+    image: seleniarm/standalone-chromium:latest
+    ports:
+      - "4444:4444"
 
 secrets:
   host_ssh_key:
