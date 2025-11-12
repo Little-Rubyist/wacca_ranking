@@ -120,9 +120,6 @@ GEM
     concurrent-ruby (1.1.10)
     connection_pool (2.2.5)
     crass (1.0.6)
-    debug (1.5.0)
-      irb (>= 1.3.6)
-      reline (>= 0.2.7)
     diff-lcs (1.5.0)
     diffy (3.4.2)
     digest (3.1.0)
@@ -160,9 +157,6 @@ GEM
     importmap-rails (1.1.2)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
-    io-console (0.5.11)
-    irb (1.4.1)
-      reline (>= 0.3.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -268,8 +262,6 @@ GEM
       activesupport (>= 6.1.5)
       i18n
     regexp_parser (2.5.0)
-    reline (0.3.1)
-      io-console (~> 0.5)
     rexml (3.2.5)
     ridgepole (1.1.0)
       activerecord (>= 5.1, < 7.1)
@@ -371,7 +363,6 @@ DEPENDENCIES
   capistrano-rbenv (~> 2.2)
   capistrano3-puma
   capybara
-  debug
   factory_bot_rails
   haml-rails
   i18n-js!
