@@ -131,15 +131,18 @@ describe 'user_songs#index', type: :system, js: false do
   let!(:user) { create(:user, password: 'password123') }
 
   before do
-    # seedデータのsongを使ってuser_songを作成
-    Song.limit(5).each do |song|
-      create(:user_song, user: user, song: song)
-    end
     log_in_as(user)
   end
 
   context 'マイページの表示' do
-    before { visit user_songs_path }
+    before do
+      # actual music_ids
+      [3008, 3034, 3020].each do |music_id|
+        song = Song.find_by(music_id:)
+        create(:user_song, user:, song:)
+      end
+      visit user_songs_path
+    end
 
     it 'ページタイトルが表示される' do
       expect(page).to have_selector('h1', text: 'My Page')
@@ -166,26 +169,71 @@ describe 'user_songs#index', type: :system, js: false do
   end
 
   context '検索機能' do
-    before { visit user_songs_path }
+    let!(:high_level_song) { Song.find_by!(music_id: 3008) }
+    let!(:low_level_song) { Song.find_by!(music_id: 3034) }
+    let!(:medium_level_song) { Song.find_by!(music_id: 3020) }
+    let!(:offline_song) { Song.find_by!(music_id: 2060) }
 
-    it 'レベル範囲検索の設定ができる' do
-      find('#q_song_difficulty_gteq').set('5')
-      expect(page).to have_field('q_song_difficulty_gteq')
+    before do
+      create(:user_song, user:, song: high_level_song)
+      create(:user_song, user:, song: low_level_song)
+      create(:user_song, user:, song: medium_level_song, is_favorite: true)
+      create(:user_song, user:, song: offline_song)
+
+      visit user_songs_path
     end
 
-    it 'タイトル検索フィールドが使える' do
-      fill_in 'q_song_title_or_song_title_english_cont', with: 'テスト'
-      expect(find_field('q_song_title_or_song_title_english_cont').value).to eq('テスト')
+    it 'レベル範囲検索で正しく絞り込める' do
+      find('#q_song_difficulty_gteq').set('8')
+      click_button I18n.t('views.common.search_button')
+
+      expect(page).to have_text(high_level_song.title)
+      expect(page).to have_text(medium_level_song.title)
+      expect(page).to have_text(offline_song.title)
+      expect(page).not_to have_text('3.0')  # 低レベル楽曲は除外
     end
 
-    it 'お気に入りフィルターが使える' do
+    it 'タイトル検索で正しく絞り込める' do
+      fill_in 'q_song_title_or_song_title_english_cont', with: 'ヒトガタ'
+      click_button I18n.t('views.common.search_button')
+
+      expect(page).to have_text('ヒトガタ')
+      expect(page).to have_text('12.6')
+      expect(page).to have_text('9.7')
+      expect(page).to have_text('3.0')
+      expect(page).not_to have_text('cœur')
+    end
+
+    it 'お気に入りフィルターで正しく絞り込める' do
       check 'q_is_favorite_true'
-      expect(page).to have_checked_field('q_is_favorite_true')
+      click_button I18n.t('views.common.search_button')
+
+      expect(page).to have_text(medium_level_song.title)
+      expect(page).to have_text('9.7')   # お気に入りの中レベル
+      expect(page).not_to have_text('3.0')
+      expect(page).not_to have_text('12.6')
+      expect(page).not_to have_text('cœur')
     end
 
-    it 'オフライン曲フィルターが使える' do
+    it 'オフライン曲フィルターで正しく絞り込める' do
       check 'q_song_can_play_offline_true'
-      expect(page).to have_checked_field('q_song_can_play_offline_true')
+      click_button I18n.t('views.common.search_button')
+
+      expect(page).to have_text(offline_song.title)
+      expect(page).to have_text('cœur')
+      expect(page).not_to have_text('ヒトガタ')
+    end
+
+    it '複数の条件を組み合わせて検索できる' do
+      find('#q_song_difficulty_gteq').set('8')
+      check 'q_is_favorite_true'
+      click_button I18n.t('views.common.search_button')
+
+      expect(page).to have_text(medium_level_song.title)
+      expect(page).to have_text('9.7')   # お気に入りかつ8以上
+      expect(page).not_to have_text('3.0')   # レベル8未満
+      expect(page).not_to have_text('12.6')  # 非お気に入り
+      expect(page).not_to have_text('cœur')  # 非お気に入り
     end
   end
 
@@ -278,15 +326,18 @@ describe 'users#show', type: :system, js: false do
   let!(:user) { create(:user, password: 'password123') }
 
   before do
-    # seedデータのsongを使ってuser_songを作成
-    Song.limit(3).each do |song|
-      create(:user_song, user: user, song: song)
-    end
     log_in_as(user)
   end
 
   context 'ユーザー詳細ページの表示' do
-    before { visit user_path(user) }
+    before do
+      # actual music_ids
+      [2074, 2080, 2086].each do |music_id|
+        song = Song.find_by!(music_id:)
+        create(:user_song, user:, song:)
+      end
+      visit user_path(user)
+    end
 
     it 'ページタイトルが表示される' do
       expect(page).to have_selector('h1', text: 'My Page')
@@ -321,16 +372,59 @@ describe 'users#show', type: :system, js: false do
   end
 
   context '検索機能' do
-    before { visit user_path(user) }
+    let!(:high_level_song) { Song.find_by!(music_id: 3030, diff_type: 1) }
+    let!(:low_level_song) { Song.find_by!(music_id: 3030, diff_type: 2) }
+    let!(:medium_level_song) { Song.find_by!(music_id: 3030, diff_type: 3) }
+    let!(:offline_song) { Song.find_by!(music_id: 2253) }
 
-    it 'レベル範囲検索の設定ができる' do
-      find('#q_song_difficulty_gteq').set('5')
-      expect(page).to have_field('q_song_difficulty_gteq')
+    before do
+      create(:user_song, user:, song: high_level_song)
+      create(:user_song, user:, song: low_level_song)
+      create(:user_song, user:, song: medium_level_song, is_favorite: true)
+      create(:user_song, user:, song: offline_song)
+
+      visit user_path(user)
     end
 
-    it 'タイトル検索フィールドが使える' do
-      fill_in 'q_song_title_cont', with: 'テスト'
-      expect(find_field('q_song_title_cont').value).to eq('テスト')
+    it 'レベル範囲検索で正しく絞り込める' do
+      find('#q_song_difficulty_gteq').set('8')
+      click_button '検索'
+
+      expect(page).to have_text(high_level_song.title)
+      expect(page).to have_text(medium_level_song.title)
+      expect(page).to have_text(offline_song.title)
+      expect(page).not_to have_text('3.0')  # 低レベル楽曲は除外
+    end
+
+    it 'タイトル検索で正しく絞り込める' do
+      fill_in 'q_song_title_cont', with: 'ヒトガタ'
+      click_button '検索'
+
+      expect(page).to have_text('ヒトガタ')
+      expect(page).to have_text('12.6')  # 高レベルのヒトガタ
+      expect(page).to have_text('9.7')   # 中レベルのヒトガタ
+      expect(page).to have_text('3.0')   # 低レベルのヒトガタ
+      expect(page).not_to have_text('cœur')  # 他の楽曲は除外
+    end
+
+    it 'お気に入りフィルターで正しく絞り込める' do
+      check 'q_is_favorite_true'
+      click_button '検索'
+
+      expect(page).to have_text(medium_level_song.title)
+      expect(page).to have_text('9.7')   # お気に入りの中レベル
+      expect(page).not_to have_text('3.0')   # 非お気に入り
+      expect(page).not_to have_text('12.6')  # 非お気に入り
+      expect(page).not_to have_text('cœur')  # 非お気に入り
+    end
+
+    it 'オフライン曲フィルターで正しく絞り込める' do
+      check 'q_song_can_play_offline_true'
+      click_button '検索'
+
+      expect(page).to have_text(offline_song.title)
+      expect(page).to have_text('cœur')
+      expect(page).not_to have_text('ヒトガタ')  # オンライン楽曲は除外
     end
   end
 
