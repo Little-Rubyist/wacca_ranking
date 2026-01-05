@@ -31,4 +31,4 @@ services:
 
 secrets:
   host_ssh_key:
-    file: id_rsa
+    file: ${SSH_KEY_PATH}

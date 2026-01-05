@@ -36,6 +36,7 @@
 
 /config/credentials/production.key
 /config/database.yml
+.env
 /app/assets/images/master/*
 !/app/assets/images/master/
 !/app/assets/images/master/.keep
