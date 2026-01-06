@@ -169,15 +169,15 @@ describe 'user_songs#index', type: :system, js: false do
   end
 
   context '検索機能' do
-    let!(:high_level_song) { Song.find_by!(music_id: 3008) }
-    let!(:low_level_song) { Song.find_by!(music_id: 3034) }
-    let!(:medium_level_song) { Song.find_by!(music_id: 3020) }
-    let!(:offline_song) { Song.find_by!(music_id: 2060) }
+    let!(:low_level_song) { Song.find_by!(music_id: 3030, diff_type: 1) } # ヒトガタ Normal 3.0
+    let!(:medium_level_song) { Song.find_by!(music_id: 3030, diff_type: 2) } # ヒトガタ Hard 9.7
+    let!(:high_level_song) { Song.find_by!(music_id: 3030, diff_type: 3) } # ヒトガタ Expert 12.6
+    let!(:offline_song) { Song.find_by!(music_id: 2253, diff_type: 3) } # cœur Expert 12.7
 
     before do
-      create(:user_song, user:, song: high_level_song)
       create(:user_song, user:, song: low_level_song)
       create(:user_song, user:, song: medium_level_song, is_favorite: true)
+      create(:user_song, user:, song: high_level_song)
       create(:user_song, user:, song: offline_song)
 
       visit user_songs_path
@@ -331,8 +331,8 @@ describe 'users#show', type: :system, js: false do
 
   context 'ユーザー詳細ページの表示' do
     before do
-      # actual music_ids
-      [2074, 2080, 2086].each do |music_id|
+      # Use existing music_ids
+      [3008, 3020, 3030].each do |music_id|
         song = Song.find_by!(music_id:)
         create(:user_song, user:, song:)
       end
@@ -372,15 +372,15 @@ describe 'users#show', type: :system, js: false do
   end
 
   context '検索機能' do
-    let!(:high_level_song) { Song.find_by!(music_id: 3030, diff_type: 1) }
-    let!(:low_level_song) { Song.find_by!(music_id: 3030, diff_type: 2) }
-    let!(:medium_level_song) { Song.find_by!(music_id: 3030, diff_type: 3) }
-    let!(:offline_song) { Song.find_by!(music_id: 2253) }
+    let!(:low_level_song) { Song.find_by!(music_id: 3030, diff_type: 1) } # ヒトガタ Normal 3.0
+    let!(:medium_level_song) { Song.find_by!(music_id: 3030, diff_type: 2) } # ヒトガタ Hard 9.7
+    let!(:high_level_song) { Song.find_by!(music_id: 3030, diff_type: 3) } # ヒトガタ Expert 12.6
+    let!(:offline_song) { Song.find_by!(music_id: 2253, diff_type: 3) } # cœur Expert 12.7
 
     before do
-      create(:user_song, user:, song: high_level_song)
       create(:user_song, user:, song: low_level_song)
       create(:user_song, user:, song: medium_level_song, is_favorite: true)
+      create(:user_song, user:, song: high_level_song)
       create(:user_song, user:, song: offline_song)
 
       visit user_path(user)
