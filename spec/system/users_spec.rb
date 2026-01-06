@@ -347,7 +347,7 @@ describe 'users#show', type: :system, js: false do
     it '検索フォームが表示される' do
       expect(page).to have_field('q_song_difficulty_gteq', type: 'range')
       expect(page).to have_select('q_song_diff_type_eq')
-      expect(page).to have_field('q_song_title_cont', type: 'search')
+      expect(page).to have_field('q_song_title_or_song_title_english_cont', type: 'search')
       expect(page).to have_select('q_user_scores_achieve_eq')
     end
 
@@ -397,7 +397,7 @@ describe 'users#show', type: :system, js: false do
     end
 
     it 'タイトル検索で正しく絞り込める' do
-      fill_in 'q_song_title_cont', with: 'ヒトガタ'
+      fill_in 'q_song_title_or_song_title_english_cont', with: 'ヒトガタ'
       click_button '検索'
 
       expect(page).to have_text('ヒトガタ')
@@ -429,12 +429,12 @@ describe 'users#show', type: :system, js: false do
   end
 
   context 'アクセス制御' do
-    it '未ログイン時はエラーが発生する' do
+    it '未ログイン時でもページにアクセスできる' do
       page.driver.submit :post, sign_out_path, {}
+      visit user_path(user)
 
-      expect {
-        visit user_path(user)
-      }.to raise_error(NoMethodError, /undefined method `id' for nil:NilClass/)
+      expect(page).to have_current_path(user_path(user), ignore_query: true)
+      expect(page).to have_selector('h1', text: 'My Page')
     end
 
     it '他のユーザーのページにアクセスできる（認証制限なし）' do
