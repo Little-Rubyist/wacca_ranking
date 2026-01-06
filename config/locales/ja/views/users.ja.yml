@@ -2,6 +2,8 @@ ja:
   views:
     users:
       new: アカウント登録
+      unselect: 未選択
+      or_more: 以上
     session:
       new: ログイン
       login_button: ログイン
