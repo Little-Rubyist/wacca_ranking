@@ -30,7 +30,7 @@ Things you may want to cover:
 
   memo: add credentials key
   
-  `bundle exec rails credentials:edit RAILS_ENV=env`
+  `bundle exec rails credentials:edit -e env`
 
 * deployment
 

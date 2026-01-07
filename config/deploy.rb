@@ -4,6 +4,9 @@ lock "~> 3.17.1"
 set :application, "wacca_ranking"
 set :repo_url, "git@github.com:Little-Rubyist/wacca_ranking.git"
 set :rbenv_ruby, '3.2.0'
+set :bundle_env_variables, {
+  'BUNDLE_FORCE_RUBY_PLATFORM' => 'true'
+}
 set :deploy_to, "/home/yla_aioi/#{fetch(:application)}"
 set :ridgepole_env, fetch(:rails_env)
 

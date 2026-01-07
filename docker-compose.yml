@@ -13,10 +13,12 @@ services:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     environment:
-      - EDITOR=vim
-      - SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub
+      EDITOR: "vim"
+      SELENIUM_DRIVER_URL: "http://selenium_chrome:4444/wd/hub"
+      SSH_AUTH_SOCK: "/tmp/ssh-agent.sock"
     volumes:
       - .:/app
+      - "$SSH_AUTH_SOCK:/tmp/ssh-agent.sock"
     ports:
       - "3000:3000"
     depends_on:
