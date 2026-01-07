@@ -4,17 +4,14 @@ lock "~> 3.17.1"
 set :application, "wacca_ranking"
 set :repo_url, "git@github.com:Little-Rubyist/wacca_ranking.git"
 set :rbenv_ruby, '3.2.0'
-set :bundle_env_variables, {
-  'BUNDLE_FORCE_RUBY_PLATFORM' => 'true'
-}
-set :deploy_to, "/home/yla_aioi/#{fetch(:application)}"
+set :deploy_to, "/home/deploy/#{fetch(:application)}"
 set :ridgepole_env, fetch(:rails_env)
 
 set :nginx_config_name, "#{fetch(:application)}.conf"
 set :nginx_sites_enabled_path, "/etc/nginx/conf.d"
 
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "app/assets/images/master"
-append :linked_files, "config/database.yml", "db/csvs/console_colors.csv", "db/csvs/custom_titles.csv", "db/csvs/icons.csv", "db/csvs/navigators.csv", "db/csvs/plates.csv", "db/csvs/songs.csv", "db/csvs/titles.csv"
+append :linked_files, "db/csvs/console_colors.csv", "db/csvs/custom_titles.csv", "db/csvs/icons.csv", "db/csvs/navigators.csv", "db/csvs/plates.csv", "db/csvs/songs.csv", "db/csvs/titles.csv"
 
 namespace :deploy do
   desc "No ActiveRecord override"
