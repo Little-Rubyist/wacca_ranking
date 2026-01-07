@@ -29,7 +29,7 @@ namespace :ridgepole do
       within current_path do
         with rails_env: fetch(:rails_env) do
           execute :bundle, :exec, :rails, "runner",
-                  "system(%Q(bundle exec rails ridgepole:apply)"
+                  %Q('system("bundle exec ridgepole --apply --file db/schemas/Schemafile --config config/database.yml -E #{fetch(:rails_env)}")')
         end
       end
     end
