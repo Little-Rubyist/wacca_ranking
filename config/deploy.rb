@@ -25,16 +25,16 @@ after 'deploy:publishing', 'ridgepole:apply'
 namespace :ridgepole do
   desc 'ridgepole apply'
   task :apply do
-    # on roles(:db) do
-    #   within current_path do
-    #     with rails_env: fetch(:rails_env) do
-    #       execute :bundle, :exec, :rails, "runner",
-    #               "system(%Q(bundle exec rails ridgepole:apply)"
-    #     end
-    #   end
-    # end
+    on roles(:db) do
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :bundle, :exec, :rails, "runner",
+                  "system(%Q(bundle exec rails ridgepole:apply)"
+        end
+      end
+    end
 
-    invoke 'ridgepole:apply'
+    # invoke 'ridgepole:apply'
   end
 end
 
