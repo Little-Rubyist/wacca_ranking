@@ -21,10 +21,10 @@ namespace :deploy do
   end
 end
 
-after 'deploy:publishing', 'ridgepole:apply'
+after 'deploy:publishing', 'ridgepole:ridgepole_apply'
 namespace :ridgepole do
   desc 'ridgepole apply'
-  task :apply do
+  task :ridgepole_apply do
     on roles(:db) do
       within current_path do
         with rails_env: fetch(:rails_env) do
@@ -33,8 +33,6 @@ namespace :ridgepole do
         end
       end
     end
-
-    # invoke 'ridgepole:apply'
   end
 end
 
