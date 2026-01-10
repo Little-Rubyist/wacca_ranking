@@ -10,7 +10,7 @@ set :stage, :production
 set :deploy_env, 'production'
 set :rails_env, 'production'
 set :ridgepole_env, fetch(:rails_env)
-set :branch, 'main'
+set :branch, 'deploy_production'
 
 set :ssh_options, {
   keys: %w(~/.ssh/main-windows.pem),
