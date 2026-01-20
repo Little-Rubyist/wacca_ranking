@@ -10,15 +10,15 @@ set :stage, :production
 set :deploy_env, 'production'
 set :rails_env, 'production'
 set :ridgepole_env, fetch(:rails_env)
-set :branch, 'deploy_production'
+set :branch, 'main'
 
 set :ssh_options, {
-  keys: %w(~/.ssh/main-windows.pem),
-  forward_agent: true
+  keys: [File.expand_path("~/.ssh/main.pem")],
+  forward_agent: true,
 }
 
-server "35.75.129.108",
-       user: "yla_aioi",
+server ENV.fetch('DEPLOY_IP'),
+       user: "deploy",
        roles: %w[app db web]
 
 append :linked_files, "config/credentials/production.key"
