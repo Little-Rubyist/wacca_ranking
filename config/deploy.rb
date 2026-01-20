@@ -21,20 +21,18 @@ namespace :deploy do
   end
 end
 
-after 'deploy:publishing', 'ridgepole:apply'
+after 'deploy:publishing', 'ridgepole:ridgepole_apply'
 namespace :ridgepole do
   desc 'ridgepole apply'
-  task :apply do
-    # on roles(:db) do
-    #   within current_path do
-    #     with rails_env: fetch(:rails_env) do
-    #       execute :bundle, :exec, :rails, "runner",
-    #               "system(%Q(bundle exec rails ridgepole:apply)"
-    #     end
-    #   end
-    # end
-
-    invoke 'ridgepole:apply'
+  task :ridgepole_apply do
+    on roles(:db) do
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :bundle, :exec, :rails, "runner",
+                  %Q('system("bundle exec ridgepole --apply --file db/schemas/Schemafile --config config/database.yml -E #{fetch(:rails_env)}")')
+        end
+      end
+    end
   end
 end
 
