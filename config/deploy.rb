@@ -3,7 +3,7 @@ lock "~> 3.17.1"
 
 set :application, "wacca_ranking"
 set :repo_url, "git@github.com:Little-Rubyist/wacca_ranking.git"
-set :rbenv_ruby, '3.2.0'
+set :rbenv_ruby, '3.3.0'
 set :deploy_to, "/home/deploy/#{fetch(:application)}"
 set :ridgepole_env, fetch(:rails_env)
 set :bundle_jobs, 1
