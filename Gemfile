@@ -1,12 +1,13 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.0"
+ruby "3.3.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+gem "sprockets", "4.2.0" # 3.3.0の時にregexの更新で引数エラーになってる。sprockets-railsを上げると消せるか？
 gem "sprockets-rails"
 
 # Use mysql as the database for Active Record
@@ -49,7 +50,7 @@ gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  gem 'rspec-rails', '~> 5.0.0'
+  gem 'rspec-rails'
   gem 'factory_bot_rails'
 end
 
