@@ -7,7 +7,7 @@ Things you may want to cover:
 
 * Ruby version
 
-  3.3.0
+  3.4.1
 
 * System dependencies
 

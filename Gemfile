@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.3.0"
+ruby "3.4.1"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3"
@@ -9,6 +9,15 @@ gem "rails", "~> 7.0.3"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets", "4.2.0" # 3.3.0の時にregexの更新で引数エラーになってる。sprockets-railsを上げると消せるか？
 gem "sprockets-rails"
+
+# 3.4でbundled gemになってた。各gemの依存に入れられていないのでエラーになる
+gem "mutex_m"
+gem "base64"
+gem "bigdecimal"
+gem "observer"
+gem "nkf"
+gem "drb"
+gem "csv"
 
 # Use mysql as the database for Active Record
 gem "mysql2", "~> 0.5"

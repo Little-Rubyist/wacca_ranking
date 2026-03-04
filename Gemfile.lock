@@ -80,7 +80,9 @@ GEM
       sshkit (>= 1.6.1, != 1.7.0)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
+    base64 (0.3.0)
     bcrypt (3.1.18)
+    bigdecimal (3.1.8)
     bindex (0.8.1)
     bootsnap (1.12.0)
       msgpack (~> 1.2)
@@ -120,11 +122,13 @@ GEM
     concurrent-ruby (1.1.10)
     connection_pool (2.2.5)
     crass (1.0.6)
+    csv (3.3.5)
     diff-lcs (1.6.2)
     diffy (3.4.2)
     digest (3.1.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    drb (2.2.3)
     erubi (1.10.0)
     erubis (2.7.0)
     execjs (2.8.1)
@@ -193,6 +197,7 @@ GEM
       libv8-node (~> 16.10.0.0)
     minitest (5.16.1)
     msgpack (1.5.2)
+    mutex_m (0.3.0)
     mysql2 (0.5.4)
     net-http-digest_auth (1.4.1)
     net-http-persistent (4.0.1)
@@ -215,6 +220,7 @@ GEM
       timeout
     net-ssh (7.0.1)
     nio4r (2.5.8)
+    nkf (0.2.0)
     nokogiri (1.19.0)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -222,6 +228,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.0-x86_64-linux-gnu)
       racc (~> 1.4)
+    observer (0.1.2)
     pagy (5.10.1)
       activesupport
     popper_js (2.11.5)
@@ -331,8 +338,6 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    tzinfo-data (1.2025.3)
-      tzinfo (>= 1.0.0)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
@@ -361,7 +366,9 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  base64
   bcrypt (~> 3.1.7)
+  bigdecimal
   bootsnap
   bootstrap
   bootstrap-table-rails
@@ -371,6 +378,8 @@ DEPENDENCIES
   capistrano-rbenv (~> 2.2)
   capistrano3-puma
   capybara
+  csv
+  drb
   factory_bot_rails
   haml-rails
   i18n-js!
@@ -379,8 +388,11 @@ DEPENDENCIES
   launchy
   mechanize
   mini_racer
+  mutex_m
   mysql2 (~> 0.5)
+  nkf
   nokogiri
+  observer
   pagy
   puma (~> 5.0)
   rails (~> 7.0.3)
@@ -400,7 +412,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.3.0p0
+   ruby 3.4.1p0
 
 BUNDLED WITH
    2.4.1
