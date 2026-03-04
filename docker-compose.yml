@@ -16,6 +16,7 @@ services:
       EDITOR: "vim"
       SELENIUM_DRIVER_URL: "http://selenium_chrome:4444/wd/hub"
       SSH_AUTH_SOCK: "/tmp/ssh-agent.sock"
+      DEPLOY_IP: "${DEPLOY_IP}"
     volumes:
       - .:/app
       - "$SSH_AUTH_SOCK:/tmp/ssh-agent.sock"
