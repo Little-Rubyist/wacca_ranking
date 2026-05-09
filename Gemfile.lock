@@ -219,7 +219,7 @@ GEM
       net-protocol
       timeout
     net-ssh (7.3.0)
-    nio4r (2.5.8)
+    nio4r (2.7.5)
     nkf (0.2.0)
     nokogiri (1.19.0)
       mini_portile2 (~> 2.8.2)
@@ -327,7 +327,7 @@ GEM
       sshkit (~> 1.8)
     stimulus-rails (1.0.4)
       railties (>= 6.0.0)
-    strscan (3.0.3)
+    strscan (3.1.8)
     temple (0.8.2)
     thor (1.2.1)
     tilt (2.0.10)
@@ -412,7 +412,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.4.1p0
+  ruby 3.4.9
 
 BUNDLED WITH
-   2.4.1
+  4.0.9

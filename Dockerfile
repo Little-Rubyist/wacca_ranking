@@ -1,4 +1,4 @@
-FROM ruby:3.4.1
+FROM ruby:3.4.9
 
 ENV APP_ROOT /app
 ENV LANG ja_JP.UTF-8
