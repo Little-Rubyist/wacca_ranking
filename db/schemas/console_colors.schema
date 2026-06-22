@@ -1,5 +1,5 @@
 # encoding: utf-8
-create_table "console_colors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+create_table "console_colors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
   t.string :name
   t.datetime "updated_at", precision: 6, null: false
   t.datetime "created_at", precision: 6, null: false
