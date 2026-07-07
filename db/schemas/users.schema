@@ -1,5 +1,5 @@
 # encoding: utf-8
-create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
   t.string :name
   t.string :display_name
   t.string :password_digest

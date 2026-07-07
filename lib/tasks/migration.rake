@@ -1,12 +1,12 @@
 namespace :ridgepole do
   desc 'Apply database schema'
   task apply: :environment do
-    ridgepole('--apply', "-E #{Rails.env}", "--file #{schema_file}")
+    ridgepole('--apply', "--file #{schema_file}")
   end
 
   desc 'Export database schema'
   task export: :environment do
-    ridgepole('--export', "-E #{Rails.env}", '--split', "--output #{schema_file}")
+    ridgepole('--export', '--split', "--output #{schema_file}")
   end
 
   private
@@ -20,7 +20,12 @@ namespace :ridgepole do
   end
 
   def ridgepole(*options)
-    command = ['bundle exec ridgepole', "--config #{config_file}"]
+    command = [
+      'bundle exec ridgepole',
+      "--config #{config_file}",
+      "-E #{Rails.env}",
+      "--require #{Rails.root.join('config/environment')}",
+    ]
     system [command + options].join(' ')
   end
 end
