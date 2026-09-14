@@ -1,5 +1,5 @@
 # encoding: utf-8
-create_table "songs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+create_table "songs", force: :cascade, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci" do |t|
   t.string :title
   t.string :title_english
   t.string :ruby
