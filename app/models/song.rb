@@ -20,4 +20,13 @@ class Song < ApplicationRecord
     expert: 3,
     inferno: 4
   }
+
+  # ransack 4系では検索対象の属性・関連を明示的に許可する必要がある
+  def self.ransackable_attributes(auth_object = nil)
+    %w[difficulty diff_type genre title title_english can_play_offline]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    []
+  end
 end
